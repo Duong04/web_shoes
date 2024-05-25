@@ -69,12 +69,14 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form" action="" method="post" id="contactForm" novalidate="novalidate">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email'">
+                                <span class="text-danger" id="email-error"><?= isset($emailError) ? $emailError : ''?></span>
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="psw" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                                <span class="text-danger" id="psw-error"><?= isset($pswError) ? $pswError : ''?></span>
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
@@ -83,7 +85,7 @@
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="primary-btn">Log In</button>
+								<button type="submit" value="submit" name="submit" class="primary-btn">Log In</button>
 								<a href="#">Forgot Password?</a>
 							</div>
 						</form>
@@ -113,7 +115,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
-    <script src="public/js/register.js"></script>
+    <script src="public/js/login.js"></script>
 </body>
 
 </html>

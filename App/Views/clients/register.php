@@ -73,7 +73,7 @@
 						<form class="row login_form" action="" method="POST" id="contactForm">
 							<div class="col-md-12 form-group">
 								<input type="email" class="form-control" id="email" name="email" placeholder="Your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email'">
-                                <span class="text-danger" id="email-error"></span>
+                                <span class="text-danger" id="email-error"><?= isset($emailError) ? $emailError : ''?></span>
 							</div>
                             <div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="userName" name="userName" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">

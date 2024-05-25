@@ -10,13 +10,13 @@
             $mail->Host       = 'smtp.gmail.com';                     
             $mail->SMTPAuth   = true;                                   
             $mail->Username   = 'tinhdz3092004@gmail.com';                    
-            $mail->Password   = 'goyc mujp vsqq xvqt';                               
+            $mail->Password   = 'smys nrus ziqu kryo';                               
             $mail->SMTPSecure = 'ssl';            
             $mail->Port       = 465;                                   
                 
                     //Recipients
             $mail->CharSet = 'UTF-8';
-            $mail->setFrom('tinhdz3092004@gmail.com', 'Shop SUGAR');
+            $mail->setFrom('tinhdz3092004@gmail.com', 'SUGAR');
             $mail->addAddress($email); 
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = $title;
