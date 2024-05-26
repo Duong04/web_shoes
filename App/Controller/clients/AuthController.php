@@ -1,6 +1,7 @@
 <?php 
     class AuthController {
         private $UserModel;
+        private $url = 'http://localhost/php/php_oop/web_shoes';
         public function __construct() {
             $this->UserModel = new Users();
         }
@@ -25,7 +26,7 @@
                             $emailError = 'Account has been disabled!';
                         } else {
                             if (password_verify($psw, $password)) {
-                                if ($role == 'Customer' || $role == 'Admin') {
+                                if ($role == 'Staff' || $role == 'Admin') {
                                     $_SESSION['userName'] = $user_name;
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
@@ -67,7 +68,7 @@
                             $title = "Confirm registration and activate account";
                             $content = "<div>
                                             <img style='width: 130px;' src='https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2013/05/email-logo.jpg' alt=''>
-                                            <p>To activate your account, please click <a href='http://localhost/php/php_oop/web_shoes/index.php?url=confirm-user&token=$token' style='color:blue;'>active now</a></p>
+                                            <p>To activate your account, please click <a href='$this->url/index.php?url=confirm-user&token=$token' style='color:blue;'>active now</a></p>
                                         </div>"; 
                             $sendMail = send_mail($email, $title, $content, '');
                             if ($sendMail) {
@@ -98,6 +99,85 @@
             }else {
                 require_once './App/Views/clients/404.php';
             }
+        }
+
+        public function forgetPassword() { 
+            require_once './App/Views/clients/forgotPsw.php';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (isset($_POST['submit'])) {
+                    $email = $_POST['email'];
+                    $checkMail = $this->UserModel->selectEmail($email);
+                    if ($checkMail != null) {
+                        $otp = rand(111111,999999);
+                        $updateOtp = $this->UserModel->updateOtpWithEmail($otp, $email);
+                        if ($updateOtp) {
+                            $title = "Change the password";
+                            $content = "Click the link to change your password <a href='$this->url/index.php?url=reset-password&otp=$otp'>click</a>";
+                            $sendMail = send_mail($email, $title, $content, '');
+                            if ($sendMail) {
+                                echo "<script>
+                                    Swal.fire({
+                                        title: 'Email sent successfully!',
+                                        text: 'Please check your email to change your password!',
+                                        icon: 'success',
+                                        timer: 5000
+                                    });
+                                    </script>";
+                            }
+                        }
+                    }else {
+                        echo "<script>
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: 'This email does not exist',
+                                icon: 'warning',
+                                timer: 5000,
+                                showClass: {
+                                    popup: `
+                                        animate__animated
+                                        animate__fadeInDown
+                                        animate__faster
+                                    `
+                                },
+                                hideClass: {
+                                    popup: `
+                                        animate__animated
+                                        animate__fadeOutUp
+                                        animate__faster
+                                    `
+                                }
+                            });
+                            </script>";
+                    }
+                }
+            }
+
+        }
+
+        public function resetPassword() {
+            if (isset($_GET['otp'])) {
+                $otp = $_GET['otp'];
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    if (isset($_POST['submit'])) {
+                        $checkOtp = $this->UserModel->selectOtp($otp);
+                        if ($checkOtp != null) {
+                            $password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
+                            $updatePsw = $this->UserModel->updatePasswordWithEmail($password, $checkOtp['email']);
+                            if ($updatePsw) {
+                                header('location: ./index.php?url=login');
+                                exit();
+                            }
+                        }else {
+                            header('Location: ./index.php?url=404');
+                            exit();
+                        }
+                    }
+                }
+            }else {
+                header('Location: ./index.php?url=404');
+                exit();
+            }
+            require_once './App/Views/clients/resetPsw.php';
         }
     }
 ?>

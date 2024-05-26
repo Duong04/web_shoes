@@ -25,6 +25,21 @@ class Users extends Database {
         $sql = "UPDATE users SET status = 'active', token = 0 WHERE token = ?";
         return $this->cud($sql, [$token]);
     }
+
+    function updateOtpWithEmail($otp, $email) {
+        $sql = "UPDATE users SET otp = ? WHERE email = ?";
+        return $this->cud($sql, [$otp, $email]);
+    }
+
+    function selectOtp($otp) {
+        $sql = "SELECT * FROM users WHERE otp = ?";
+        return $this->selectOne($sql, [$otp]);
+    }
+
+    function updatePasswordWithEmail($password, $email) {
+        $sql = "UPDATE users SET password = ?, otp = 0 WHERE email = ?";
+        return $this->cud($sql, [$password, $email]);
+    }
 }
 
 ?>

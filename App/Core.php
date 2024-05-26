@@ -29,9 +29,17 @@ class Core {
                 $auth = new AuthController();
                 $auth->register();
                 break;
+            case 'forgot-password':
+                $auth = new AuthController();
+                $auth->forgetPassword();
+                break;
             case 'confirm-user':
                 $auth = new AuthController();
                 $auth->activeUser();
+                break;
+            case 'reset-password':
+                $auth = new AuthController();
+                $auth->resetPassword();
                 break;
             case 'checkmail':
                 require_once './App/Views/clients/checkmail.php';
