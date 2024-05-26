@@ -27,7 +27,19 @@
 						<li class="nav-item">
 							<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 						</li>
+						<?php if (!isset($_SESSION['user_id'])) { ?>
 						<li class="nav-item"><a href="./index.php?url=login" class="cart"><span class="ti-user"></span></a></li>
+						<?php }else { ?>
+						<li class="d-flex align-items-center position-relative">
+							<img width="35px" height="35px" class="dropdown-toggle rounded-circle" data-toggle="dropdown" role="button"
+								 aria-expanded="false" src="./public/img/users/z4885097517559_dfcda27d81f3d4d5aa2eb33563833159.jpg" alt="">
+							<ul class="dropdown-menu" style="left: -80px;">
+								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="">Profile</a></li>
+								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="">Administrators</a></li>
+								<li class="nav-item"><a class="nav-link" href="./index.php?url=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+							</ul>
+						</li>
+						<?php } ?>
 					</ul>
 				</div>
 			</div>

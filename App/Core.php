@@ -41,6 +41,10 @@ class Core {
                 $auth = new AuthController();
                 $auth->resetPassword();
                 break;
+            case 'logout':
+                $auth = new AuthController();
+                $auth->logout();
+                break;
             case 'checkmail':
                 require_once './App/Views/clients/checkmail.php';
                 break;

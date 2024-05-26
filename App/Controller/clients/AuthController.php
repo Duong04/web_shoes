@@ -28,12 +28,14 @@
                             if (password_verify($psw, $password)) {
                                 if ($role == 'Staff' || $role == 'Admin') {
                                     $_SESSION['userName'] = $user_name;
+                                    $_SESSION['avatar'] = $user['avatar'];
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
                                     $_SESSION['status'] = $status;
                                     header('Location: ../Admin');
                                 }else {
                                     $_SESSION['userName'] = $user_name;
+                                    $_SESSION['avatar'] = $user['avatar'];
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
                                     $_SESSION['status'] = $status;
@@ -178,6 +180,15 @@
                 exit();
             }
             require_once './App/Views/clients/resetPsw.php';
+        }
+
+        public function logout() {
+            session_unset();
+
+            session_destroy();
+            
+            header('Location: ./index.php?url=login');
+            exit();
         }
     }
 ?>
