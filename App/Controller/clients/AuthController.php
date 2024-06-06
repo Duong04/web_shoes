@@ -32,7 +32,7 @@
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
                                     $_SESSION['status'] = $status;
-                                    header('Location: ../Admin');
+                                    header('Location: ./?role=admin&page=dashboard');
                                 }else {
                                     $_SESSION['userName'] = $user_name;
                                     $_SESSION['avatar'] = $user['avatar'];
@@ -70,11 +70,11 @@
                             $title = "Confirm registration and activate account";
                             $content = "<div>
                                             <img style='width: 130px;' src='https://d15shllkswkct0.cloudfront.net/wp-content/blogs.dir/1/files/2013/05/email-logo.jpg' alt=''>
-                                            <p>To activate your account, please click <a href='$this->url/index.php?url=confirm-user&token=$token' style='color:blue;'>active now</a></p>
+                                            <p>To activate your account, please click <a href='$this->url/?page=confirm-user&token=$token' style='color:blue;'>active now</a></p>
                                         </div>"; 
                             $sendMail = send_mail($email, $title, $content, '');
                             if ($sendMail) {
-                                header('location: ./index.php?url=checkmail');
+                                header('location: ./?page=checkmail');
                                 exit();
                             }
                         }
@@ -94,7 +94,7 @@
                 if ($selectToken != null) {
                     $query = $this->UserModel->updateStatusWithToken($token);
                     if ($query) {
-                        header ('Location: ./index.php?url=login');
+                        header ('Location: ./?page=login');
                     }
                 }
                 require_once './App/Views/clients/404.php';
@@ -114,7 +114,7 @@
                         $updateOtp = $this->UserModel->updateOtpWithEmail($otp, $email);
                         if ($updateOtp) {
                             $title = "Change the password";
-                            $content = "Click the link to change your password <a href='$this->url/index.php?url=reset-password&otp=$otp'>click</a>";
+                            $content = "Click the link to change your password <a href='$this->url/?page=reset-password&otp=$otp'>click</a>";
                             $sendMail = send_mail($email, $title, $content, '');
                             if ($sendMail) {
                                 echo "<script>
@@ -166,17 +166,17 @@
                             $password = password_hash($_POST['psw'], PASSWORD_DEFAULT);
                             $updatePsw = $this->UserModel->updatePasswordWithEmail($password, $checkOtp['email']);
                             if ($updatePsw) {
-                                header('location: ./index.php?url=login');
+                                header('location: ./?page=login');
                                 exit();
                             }
                         }else {
-                            header('Location: ./index.php?url=404');
+                            header('Location: ./?page=404');
                             exit();
                         }
                     }
                 }
             }else {
-                header('Location: ./index.php?url=404');
+                header('Location: ./?page=404');
                 exit();
             }
             require_once './App/Views/clients/resetPsw.php';
@@ -187,7 +187,7 @@
 
             session_destroy();
             
-            header('Location: ./index.php?url=login');
+            header('Location: ./?page=login');
             exit();
         }
     }

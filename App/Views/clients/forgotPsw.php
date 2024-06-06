@@ -50,7 +50,7 @@
 					<h1>Login/Register</h1>
 					<nav class="d-flex align-items-center">
 						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="./index.php?url=login">Login</a>
+						<a href="./?page=login">Login</a>
 					</nav>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 						<div class="hover">
 							<h4>You Forgot Your Password?</h4>
 							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="primary-btn" href="./index.php?url=login">Return to Login</a>
+							<a class="primary-btn" href="./?page=login">Return to Login</a>
 						</div>
 					</div>
 				</div>

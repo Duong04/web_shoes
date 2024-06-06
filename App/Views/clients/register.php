@@ -45,7 +45,7 @@
 					<h1>Register/Login</h1>
 					<nav class="d-flex align-items-center">
 						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="./index.php?url=register">Register</a>
+						<a href="./?page=register">Register</a>
 					</nav>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 						<div class="hover">
 							<h4>Do you already have an account?</h4>
 							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="primary-btn" href="./index.php?url=login">Log in to your account</a>
+							<a class="primary-btn" href="./?page=login">Log in to your account</a>
 						</div>
 					</div>
 				</div>

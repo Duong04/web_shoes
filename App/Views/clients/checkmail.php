@@ -50,7 +50,7 @@
 					<h1>Checkmail</h1>
 					<nav class="d-flex align-items-center">
 						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="./index.php?url=checkmail">Checkmail</a>
+						<a href="./?page=checkmail">Checkmail</a>
 					</nav>
 				</div>
 			</div>

@@ -13,14 +13,14 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 					<ul class="nav navbar-nav menu_nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="./">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="./">Home</a></li>
 						<li class="nav-item submenu dropdown">
-							<a href="./index.php?url=shop" class="nav-link dropdown-toggle">Shop</a>
+							<a href="./?page=shop" class="nav-link dropdown-toggle">Shop</a>
 						</li>
 						<li class="nav-item submenu dropdown">
-							<a href="./index.php?url=blog" class="nav-link dropdown-toggle">Blog</a>
+							<a href="./?page=blog" class="nav-link dropdown-toggle">Blog</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="./index.php?url=contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="./?page=contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
@@ -28,15 +28,17 @@
 							<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 						</li>
 						<?php if (!isset($_SESSION['user_id'])) { ?>
-						<li class="nav-item"><a href="./index.php?url=login" class="cart"><span class="ti-user"></span></a></li>
+						<li class="nav-item"><a href="./?page=login" class="cart"><span class="ti-user"></span></a></li>
 						<?php }else { ?>
 						<li class="d-flex align-items-center position-relative">
 							<img width="35px" height="35px" class="dropdown-toggle rounded-circle" data-toggle="dropdown" role="button"
 								 aria-expanded="false" src="./public/img/users/z4885097517559_dfcda27d81f3d4d5aa2eb33563833159.jpg" alt="">
 							<ul class="dropdown-menu" style="left: -80px;">
 								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="">Profile</a></li>
-								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="">Administrators</a></li>
-								<li class="nav-item"><a class="nav-link" href="./index.php?url=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+								<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Admin') { ?>
+									<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="./?role=admin&page=dashboard">Administrators</a></li>
+								<?php } ?>
+								<li class="nav-item"><a class="nav-link" href="./?page=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
 							</ul>
 						</li>
 						<?php } ?>
