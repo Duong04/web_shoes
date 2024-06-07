@@ -56,10 +56,11 @@ const successMessage = (text) => {
 deleteCategories.forEach(item => {
     item.onclick = async function (){
         const id = this.id;
+        const path = document.getElementById(id).getAttribute('data-href');
         const result = await confirmButton('Are you sure you want to delete?', 'You will not be able to restore this!');
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`./?role=admin&page=delete-category&category_id=${id}`, {
+                const response = await fetch(path, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

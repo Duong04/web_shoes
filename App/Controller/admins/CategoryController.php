@@ -1,58 +1,10 @@
 <?php 
     class CategoryController {
         private $categoryModel;
+        private $message;
         public function __construct() {
             $this->categoryModel = new Category();
-        }
-
-        public function successMessage($text) {
-            echo "<script>
-                    Swal.fire({
-                        title: 'Success!',
-                        text: '$text',
-                        icon: 'success',
-                        timer: 3000,
-                        showClass: {
-                            popup: `
-                                animate__animated
-                                animate__fadeInDown
-                                animate__faster
-                            `
-                        },
-                        hideClass: {
-                            popup: `
-                                animate__animated
-                                animate__fadeOutUp
-                                animate__faster
-                            `
-                        }
-                    });
-                    </script>";
-        }
-
-        public function warningMessage($text) {
-            echo "<script>
-                    Swal.fire({
-                        title: 'Warning!',
-                        text: '$text',
-                        icon: 'warning',
-                        timer: 3000,
-                        showClass: {
-                            popup: `
-                                animate__animated
-                                animate__fadeInDown
-                                animate__faster
-                            `
-                        },
-                        hideClass: {
-                            popup: `
-                                animate__animated
-                                animate__fadeOutUp
-                                animate__faster
-                            `
-                        }
-                    });
-                    </script>";
+            $this->message = new Message();
         }
 
         public function index() {
@@ -60,7 +12,7 @@
             $content = 'categories/list';
             require_once './App/Views/admins/layoutAdmin.php';
             if(isset($_SESSION['checkUpdate'])) {
-                $this->successMessage('Updated Category Successfully!');
+                $this->message->successMessage('Updated Category Successfully!');
                 unset($_SESSION['checkUpdate']);
             }
         }
@@ -71,13 +23,13 @@
                 $name = $_POST['category_name'];
                 $userId = $_SESSION['user_id'];
                 $category = $this->categoryModel->selectName($name);
-                if ($name == null) {
+                if ($category == null) {
                     $result = $this->categoryModel->addCategory($name, $userId);
                     if ($result) {
-                        $this->successMessage('Add Category successfuly!');
+                        $this->message->successMessage('Add Category successfuly!');
                     }
                 }else {
-                    $this->warningMessage('This category name already exists');
+                    $this->message->warningMessage('This category name already exists');
                 }
             }
         }
@@ -96,7 +48,7 @@
             require_once './App/Views/admins/layoutAdmin.php';
             
             if (isset($_SESSION['checkUpdate'])){
-                $this->warningMessage('This category name already exists');
+                $this->message->warningMessage('This category name already exists');
                 unset($_SESSION['checkUpdate']);
             }
         }

@@ -74,7 +74,7 @@
             }
         }
 
-        function insertGetId($sql, $value, &$lastInsertId) {
+        function insertGetId($sql, $value) {
             try {
                 $conn = $this->getConnection();
                 $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -82,7 +82,7 @@
                 $stmt -> execute($value);
                 $lastInsertId = $conn->lastInsertId();
 
-                return true;
+                return $lastInsertId;
             }catch(PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }

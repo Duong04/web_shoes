@@ -45,7 +45,7 @@
                             <td><?=$item['category_updated_at']?></td>
                             <td>
                                 <a href="./?role=admin&page=edit-category&category_id=<?=$item['category_id']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <button id="<?=$item['category_id']?>" class="btn btn-danger delete"><i class="fa-solid fa-trash"></i></button>
+                                <button data-href="./?role=admin&page=delete-category&category_id=<?=$item['category_id']?>" id="<?=$item['category_id']?>" class="btn btn-danger delete"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>

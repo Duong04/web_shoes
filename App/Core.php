@@ -2,6 +2,9 @@
 require_once './configs/database.php';
 require_once './App/Models/User.php';
 require_once './App/Models/Category.php';
+require_once './App/Models/Product.php';
+require_once './App/Models/Image.php';
+require_once './App/utilities/message.php';
 require_once './App/Controller/clients/AuthController.php';
 require_once './App/Controller/admins/DashboardController.php';
 require_once './App/Controller/admins/ProductController.php';
@@ -45,7 +48,15 @@ class Core {
                         break;
                     case 'add-product':
                         $products = new ProductController();
-                        
+                        $products->store();
+                        break;
+                    case 'edit-product':
+                        $products = new ProductController();
+                        $products->edit();
+                        break;
+                    case 'delete-product':
+                        $products = new ProductController();
+                        $products->delete();
                         break;
                 }
                 break;
