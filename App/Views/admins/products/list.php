@@ -47,10 +47,10 @@
                         <tr data-id="<?=$item['product_id']?>">
                             <td><?=$i?></td>
                             <td><?=$item['product_name']?></td>
-                            <td><img width="100px" src="<?=$item['product_image']?>" alt=""></td>
-                            <td><?=$item['discount']?></td>
-                            <td><?=$item['initial_price']?></td>
-                            <td><?=$item['new_price']?></td>
+                            <td><img width="50px" src="<?=$item['product_image']?>" alt=""></td>
+                            <td><?=$item['discount'].'%'?></td>
+                            <td><?='$'.round($item['initial_price']).'.00'?></td>
+                            <td><?='$'. round($item['new_price']). '.00'?></td>
                             <td><?=$item['is_active']?></td>
                             <td><?=$item['category_name']?></td>
                             <td><?=$item['view']?></td>

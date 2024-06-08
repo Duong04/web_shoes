@@ -1,7 +1,4 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
-const deleteCategories = $$('.delete');
+const deleteCategories = document.querySelectorAll('.delete');
 
 const confirmButton = async (title, text) => {
     return Swal.fire({

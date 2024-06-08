@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <h4>Update Product</h4>
         <div class="container">
-            <form action="" method="POST" class="row" enctype="multipart/form-data">
+            <form action="./?role=admin&page=update-product&product_id=<?=$product['product_id']?>" method="POST" class="row" enctype="multipart/form-data">
                 <div class="mb-3 col-12 col-lg-6">
                     <label for="" class="form-label">Product Name</label>
                     <input value="<?=$product['product_name']?>" required name="product_name" type="text" class="form-control" placeholder="Product Name">
@@ -19,12 +19,12 @@
                 </div>
                 <div class="mb-3 col-12 col-lg-6">
                     <label for="" class="form-label">Product Image</label>
-                    <input required name="product_image" type="file" class="form-control">
+                    <input name="product_image" type="file" class="form-control">
                     <img class="mt-2" width="50px" src="<?=$product['product_image']?>" alt="">
                 </div>
                 <div class="mb-3 col-12 col-lg-6">
                     <label for="" class="form-label">Library Images</label>
-                    <input multiple required name="images[]" type="file" class="form-control">
+                    <input multiple name="images[]" type="file" class="form-control">
                     <div class="mt-2">
                         <?php foreach($images as $image) { ?>
                             <img width="50px" src="<?=$image['image_path']?>" alt="">
@@ -66,7 +66,7 @@
                     <textarea rows="" name="description" id="description" cols=""><?=$product['description']?></textarea>
                 </div>
                 <div class="mb-3">
-                    <button name="submit" class="btn btn-primary">Update Category</button>
+                    <button name="submit" class="btn btn-primary">Update Product</button>
                 </div>
             </form>
         </div>

@@ -33,6 +33,7 @@
                 <h6 class="collapse-header">Product Components:</h6>
                 <a class="collapse-item" href="./?role=admin&page=list-products">List Products</a>
                 <a class="collapse-item" href="./?role=admin&page=add-product">Add Product</a>
+                <a class="collapse-item" href="./?role=admin&page=library-images">Library Images</a>
             </div>
         </div>
     </li>

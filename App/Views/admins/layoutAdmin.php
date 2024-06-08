@@ -18,6 +18,10 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="./public/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="./public/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -90,7 +94,6 @@
         ]
       });
     </script>
-    <script src="./public/js/async.js"></script>
     <script src="
 	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
 	"></script>
@@ -100,19 +103,13 @@
     <!-- Core plugin JavaScript-->
     <script src="./public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="./public/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="./public/vendor/chart.js/Chart.min.js"></script>
     <script src="./public/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="./public/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
     <!-- Page level custom scripts -->
+    <!-- Custom scripts for all pages-->
     <script src="./public/js/demo/datatables-demo.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="./public/js/demo/chart-area-demo.js"></script>
-    <script src="./public/js/demo/chart-pie-demo.js"></script>
+    <script src="./public/js/sb-admin-2.min.js"></script>
+    <script src="./public/js/async.js"></script>
 </body>
 
 </html>

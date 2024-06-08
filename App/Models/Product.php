@@ -29,5 +29,20 @@
             $sql = "DELETE FROM products WHERE product_id = ?";
             return $this->cud($sql, [$id]);
         }
+
+        public function updateProduct($product_name, $product_image, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity_product, $product_id) {
+            if (isset($product_image)) {
+                $sql = "UPDATE products SET product_name = ?, product_image = ?, new_price = ?, initial_price = ?, discount = ?, description = ?, is_active = ?, category_id = ?, user_id = ?, quantity_product = ?, updated_at = NOW() WHERE product_id = ?";
+                return $this->cud($sql, [$product_name, $product_image, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity_product, $product_id]);
+            }else {
+                $sql = "UPDATE products SET product_name = ?, new_price = ?, initial_price = ?, discount = ?, description = ?, is_active = ?, category_id = ?, user_id = ?, quantity_product = ?, updated_at = NOW() WHERE product_id = ?";
+                return $this->cud($sql, [$product_name, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity_product, $product_id]);
+            }
+        }
+
+        public function checkNameIgnoreId($name, $product_id) {
+            $sql = "SELECT * FROM products WHERE product_name = ? AND product_id != ?";
+            return $this->selectOne($sql, [$name, $product_id]);
+        }
     }
 ?>

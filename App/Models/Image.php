@@ -7,8 +7,13 @@
         }
 
         public function selectImagesByProductId($product_id) {
-            $sql = "SELECT * FROM library_images WHERE product_id = ?";
+            $sql = "SELECT * FROM library_images L INNER JOIN products P ON P.product_id = L.product_id WHERE L.product_id = ?";
             return $this->selectAllWithId($sql, [$product_id]);
+        }
+
+        public function deleteImage($id) {
+            $sql = "DELETE FROM library_images WHERE image_id = ?";
+            return $this->cud($sql, [$id]);
         }
     }
 

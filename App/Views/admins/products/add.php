@@ -61,7 +61,7 @@
                     <textarea rows="" name="description" id="description" cols=""></textarea>
                 </div>
                 <div class="mb-3">
-                    <button name="submit" class="btn btn-primary">Add Category</button>
+                    <button name="submit" class="btn btn-primary">Add Product</button>
                 </div>
             </form>
         </div>
