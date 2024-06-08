@@ -34,7 +34,7 @@
                             <td><img src="<?=$item['image_path']?>" width="60px" alt=""></td>
                             <td><?=$item['product_name']?></td>
                             <td>
-                                <a href="./?role=admin&page=edit-image&image_id=<?=$item['image_id']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="./?role=admin&page=edit-image&image_id=<?=$item['image_id']?>&product_id=<?=$item['product_id']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <button data-href="./?role=admin&page=delete-image&image_id=<?=$item['image_id']?>" id="<?=$item['image_id']?>" class="btn btn-danger delete"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>

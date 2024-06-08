@@ -77,6 +77,14 @@ class Core {
                             $image = new ImageController();
                             $image->store();
                             break;
+                        case 'edit-image':
+                            $image = new ImageController();
+                            $image->edit();
+                            break;
+                        case 'update-image':
+                            $image = new ImageController();
+                            $image->update();
+                            break;
                         case 'delete-image':
                             $image = new ImageController();
                             $image->delete();

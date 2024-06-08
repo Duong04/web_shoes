@@ -15,6 +15,16 @@
             $sql = "DELETE FROM library_images WHERE image_id = ?";
             return $this->cud($sql, [$id]);
         }
+
+        public function selectById($id) {
+            $sql = "SELECT * FROM library_images WHERE image_id = ?";
+            return $this->selectOne($sql, [$id]);
+        }
+
+        public function updateImage($image, $id) {
+            $sql = "UPDATE library_images SET image_path = ? WHERE image_id = ?";
+            return $this->cud($sql, [$image, $id]);
+        }
     }
 
 ?>
