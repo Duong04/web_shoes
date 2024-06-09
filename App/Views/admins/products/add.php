@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3 col-12 col-lg-6">
                     <label for="" class="form-label">Discount %</label>
-                    <input required name="discount" type="number" class="form-control" placeholder="Discount %">
+                    <input name="discount" type="number" class="form-control" placeholder="Discount %">
                 </div>
                 <div class="mb-3 col-12 col-lg-6">
                     <label for="" class="form-label">Quantity</label>

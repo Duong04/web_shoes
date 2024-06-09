@@ -30,7 +30,7 @@
                 $image = $_FILES['product_image'];
                 $images = $_FILES['images'];
                 $initial_price = $_POST['initial_price'];
-                $discount = $_POST['discount'];
+                $discount = $_POST['discount'] == '' ? 0 : $_POST['discount'];
                 $quantity = $_POST['quantity'];
                 $category_id = $_POST['category_id'];
                 $is_active = $_POST['is_active'];
@@ -81,7 +81,7 @@
                 $image = $_FILES['product_image'];
                 $images = $_FILES['images'];
                 $initial_price = $_POST['initial_price'];
-                $discount = $_POST['discount'];
+                $discount = $_POST['discount'] == '' ? 0 : $_POST['discount'];
                 $quantity = $_POST['quantity'];
                 $category_id = $_POST['category_id'];
                 $is_active = $_POST['is_active'];

@@ -57,8 +57,8 @@
                             <td><?=$item['quantity_product'] == 0 ? 'Sold Out' : $item['quantity_product']?></td>
                             <td><?=$item['user_name']?></td>
                             <td>
-                                <a href="./?role=admin&page=edit-product&product_id=<?=$item['product_id']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <button data-href="./?role=admin&page=delete-product&product_id=<?=$item['product_id']?>" id="<?=$item['product_id']?>" class="btn btn-danger delete"><i class="fa-solid fa-trash"></i></button>
+                                <a href="./?role=admin&page=edit-product&product_id=<?=$item['product_id']?>" class="btn btn-warning mt-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <button data-href="./?role=admin&page=delete-product&product_id=<?=$item['product_id']?>" id="<?=$item['product_id']?>" class="btn btn-danger delete mt-1"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                         <?php } ?>
