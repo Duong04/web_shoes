@@ -102,6 +102,20 @@
             }
         }
 
+        function count($sql, $value) {
+            try {
+                $conn = $this->getConnection();
+                $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $stmt = $conn->prepare($sql);
+                $stmt -> execute($value);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                return $result;
+            }catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        }
+
         function __destruct() {
             $this->connection = null;
         }

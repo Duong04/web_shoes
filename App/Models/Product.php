@@ -7,6 +7,16 @@
             return $this->selectAll($sql);
         }
 
+        public function selectAllProductActive() {
+            $sql = "SELECT * FROM products WHERE is_active = 'active'";
+            return $this->selectAll($sql);
+        }
+
+        public function selectAllProductWithCategories($category_name) {
+            $sql = "SELECT * FROM products P INNER JOIN categories C ON C.category_id = P.category_id WHERE P.is_active = 'active' AND C.category_name = ?";
+            return $this->selectAllWithId($sql, [$category_name]);
+        }
+
         public function selectProductById($id) {
             $sql = "SELECT * FROM products P 
                     INNER JOIN categories C On C.category_id = P.category_id
@@ -43,6 +53,33 @@
         public function checkNameIgnoreId($name, $product_id) {
             $sql = "SELECT * FROM products WHERE product_name = ? AND product_id != ?";
             return $this->selectOne($sql, [$name, $product_id]);
+        }
+
+        public function latestProducts() {
+            $sql = "SELECT * FROM products ORDER BY updated_at DESC LIMIT 8";
+            return $this->selectAll($sql);
+        }
+
+        public function saleProducts() {
+            $sql = "SELECT * FROM products ORDER BY discount DESC LIMIT 8";
+            return $this->selectAll($sql);
+        }
+
+        public function saleProductsRand() {
+            $sql = "SELECT * FROM products WHERE discount > 0 ORDER BY RAND() LIMIT 5";   
+            return $this->selectAll($sql);
+        }
+
+        public function countProducts($category_name) {
+            $sql = "SELECT COUNT(*) as product_count FROM products P INNER JOIN categories C ON C.category_id = P.category_id WHERE P.is_active = 'active' AND C.category_name = ?";
+            return $result = $this->count($sql, [$category_name]);
+
+            // Kiểm tra xem kết quả có tồn tại không
+            if(isset($result['product_count'])) {
+                return $result['product_count']; // Trả về số lượng sản phẩm
+            } else {
+                return 0; // Trả về 0 nếu không có sản phẩm
+            }
         }
     }
 ?>
