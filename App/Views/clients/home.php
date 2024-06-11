@@ -28,6 +28,13 @@
 	<link rel="stylesheet" href="public/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="public/css/magnific-popup.css">
 	<link rel="stylesheet" href="public/css/main.css">
+	<link href="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css
+	" rel="stylesheet">
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 
 <body>
@@ -226,21 +233,19 @@
 							<div class="product-details">
 								<h6><?=$item['product_name']?></h6>
 								<div class="price">
+									<h6>$<?=round($item['new_price'])?>.00</h6>
 									<?php
 									if ($item['discount'] > 0) {
 									?>
-										<h6>$<?=round($item['new_price'])?>.00</h6>
 										<h6 class="l-through">$<?=round($item['initial_price'])?>.00</h6>
-									<?php } else { ?>
-										<h6>$<?=round($item['new_price'])?>.00</h6>
-									<?php } ?>
+									<?php }?>
 								</div>
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<span id="<?=$item['product_id']?>" class="social-info cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
-									</a>
+									</span>
 									<a href="" class="social-info">
 										<span class="lnr lnr-heart"></span>
 										<p class="hover-text">Wishlist</p>
@@ -282,18 +287,15 @@
 									<?php
 									if ($item['discount'] > 0) {
 									?>
-										<h6>$<?=round($item['new_price'])?>.00</h6>
 										<h6 class="l-through">$<?=round($item['initial_price'])?>.00</h6>
-									<?php } else { ?>
-										<h6>$<?=round($item['new_price'])?>.00</h6>
-									<?php } ?>
+									<?php }?>
 								</div>
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<span id="<?=$item['product_id']?>" class="social-info cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
-									</a>
+									</span>
 									<a href="" class="social-info">
 										<span class="lnr lnr-heart"></span>
 										<p class="hover-text">Wishlist</p>
@@ -358,8 +360,8 @@
 									<h6 class="l-through">$<?=round($item['initial_price'])?>.00</h6>
 								</div>
 								<a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>"><h4><?=$item['product_name']?></h4></a>
-								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
+								<div id="<?=$item['product_id']?>" style="cursor: pointer;" class="cart add-bag d-flex align-items-center justify-content-center">
+									<a class="add-btn"><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Add to Bag</span>
 								</div>
 							</div>
@@ -443,6 +445,9 @@
 	<?php include_once './App/Views/includes/footer.php' ?>
 	<!-- End footer Area -->
 
+	<script src="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
+	"></script>
 	<script src="public/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.public/js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -458,6 +463,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
+	<script src="public/js/async.js"></script>
 </body>
 
 </html>

@@ -77,3 +77,25 @@ deleteCategories.forEach(item => {
         }
     }
 });
+
+const cart = document.querySelectorAll('.cart');
+
+cart.forEach(item => {
+    item.onclick = async function () {
+        const id = this.id;
+        try {
+            const response = await fetch("./?page=add-cart", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id, quantity: 1 })
+            });
+            if (response.status == 200) {
+                successMessage('Add to cart successfully');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+})
