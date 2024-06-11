@@ -28,6 +28,15 @@
 	<link rel="stylesheet" href="public/css/nouislider.min.css">
 	<link rel="stylesheet" href="public/css/bootstrap.css">
 	<link rel="stylesheet" href="public/css/main.css">
+	<style>
+		.disabled {
+			pointer-events: none;
+		}
+
+		.disabled i {
+			color: #ccc;
+		}
+	</style>
 </head>
 
 <body id="category">
@@ -127,15 +136,12 @@
 							<option value="1">Show 12</option>
 						</select>
 					</div>
+					<?php if ($pages > 1) { ?>
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<a href="./?page=shop&per_page=<?=$_GET['per_page'] - 1?>" class="prev-arrow <?=$_GET['per_page'] == 1 ? 'disabled' : ''?>"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+						<a href="./?page=shop&per_page=<?=$_GET['per_page'] + 1?>" class="<?=$_GET['per_page'] == $pages ? 'disabled' : ''?> next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 					</div>
+					<?php } ?>
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -168,7 +174,7 @@
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										<a href="" class="social-info">
+										<a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
@@ -194,15 +200,12 @@
 							<option value="1">Show 12</option>
 						</select>
 					</div>
+					<?php if ($pages > 1) { ?>
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<a href="./?page=shop&per_page=<?=$_GET['per_page'] - 1?>" class="prev-arrow <?=$_GET['per_page'] == 1 ? 'disabled' : ''?>"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+						<a href="./?page=shop&per_page=<?=$_GET['per_page'] + 1?>" class="<?=$_GET['per_page'] == $pages ? 'disabled' : ''?> next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 					</div>
+					<?php } ?>
 				</div>
 				<!-- End Filter Bar -->
 			</div>
@@ -224,114 +227,20 @@
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="row">
+						<?php foreach($discountProductsRand as $item) { ?>
 						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
 							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r1.jpg" alt=""></a>
+								<a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>"><img width="100%" src="<?=$item['product_image']?>" alt=""></a>
 								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
+									<a href="" class="title" style="overflow: hidden;display: block;max-height: 1.5rem;-webkit-line-clamp: 1;display: -webkit-box;text-overflow: ellipsis;"><?=$item['product_name']?></a>
 									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
+										<h6>$<?=round($item['new_price'])?>.00</h6>
+										<h6 class="l-through">$<?=$item['initial_price']?>.00</h6>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r2.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r3.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r5.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r6.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r7.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r9.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r10.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="public/img/r11.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="col-lg-3">

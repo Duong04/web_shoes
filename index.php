@@ -1,7 +1,9 @@
 <?php 
-    require_once './App/Core.php';
+    require_once 'vendor/autoload.php';
+    use App\Router;
+    
     session_start();
     
-    new Core();
+    new Router();
 
 ?>

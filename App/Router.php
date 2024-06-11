@@ -1,4 +1,6 @@
 <?php
+namespace App;
+
 require_once './configs/database.php';
 require_once './App/Models/User.php';
 require_once './App/Models/Category.php';
@@ -14,7 +16,8 @@ require_once './App/Controller/admins/CategoryController.php';
 require_once './App/Controller/admins/ImageController.php';
 require_once 'public/library/sendmail/sendmail.php';
 
-class Core {
+
+class Router {
     private $routes = [
         'admin' => [
             'dashboard' => ['DashboardController', 'index'],
@@ -38,6 +41,7 @@ class Core {
         'client' => [
             '/' => ['HomeController', 'index'],
             'shop' => ['ShopController', 'index'],
+            'product-detail' => ['ShopController', 'single'],
             'blog' => ['View', './App/Views/clients/blog.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],
             'login' => ['AuthController', 'login'],
@@ -54,6 +58,19 @@ class Core {
         $page = isset($_GET['page']) ? $_GET['page'] : '/';
         $role = isset($_GET['role']) ? $_GET['role'] : 'client';
 
+        if ($role === 'admin') {
+            if (isset($_SESSION['user_id']) && ($_SESSION['role'] === 'Admin' || $_SESSION['role'] === 'Staff')) {
+                $this->handleRoute($role, $page);
+            } else {
+                header('Location: ./?page=login');
+                exit();
+            }
+        } else {
+            $this->handleRoute($role, $page);
+        }
+    }
+
+    private function handleRoute($role, $page) {
         if (isset($this->routes[$role][$page])) {
             $route = $this->routes[$role][$page];
             $controller = $route[0];

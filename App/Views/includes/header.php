@@ -15,7 +15,7 @@
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="./">Home</a></li>
 						<li class="nav-item submenu dropdown">
-							<a href="./?page=shop" class="nav-link dropdown-toggle">Shop</a>
+							<a href="./?page=shop&per_page=1" class="nav-link dropdown-toggle">Shop</a>
 						</li>
 						<li class="nav-item submenu dropdown">
 							<a href="./?page=blog" class="nav-link dropdown-toggle">Blog</a>
