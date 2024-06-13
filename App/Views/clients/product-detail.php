@@ -28,6 +28,13 @@
 	<link rel="stylesheet" href="public/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="public/css/magnific-popup.css">
 	<link rel="stylesheet" href="public/css/main.css">
+	<link href="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css
+	" rel="stylesheet">
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 
 <body>
@@ -88,7 +95,7 @@
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Add to Cart</a>
+							<span class="primary-btn add-cart" id="<?=$product['product_id']?>">Add to Cart</span>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
@@ -457,6 +464,9 @@
 	<?php include_once './App/Views/includes/footer.php' ?>
 	<!-- End footer Area -->
 
+	<script src="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
+	"></script>
 	<script src="public/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.public/js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -472,6 +482,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
+	<script src="public/js/async.js"></script>
 </body>
 
 </html>

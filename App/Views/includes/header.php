@@ -23,7 +23,8 @@
 						<li class="nav-item"><a class="nav-link" href="./?page=contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+						<li></li>
+						<li class="nav-item"><a href="./?page=cart" class="cart position-relative"><div class="bg-danger text-white d-flex position-absolute align-items-center justify-content-center rounded-circle" style="width: 15px; height: 15px; font-size: 0.6rem; top: -10px; right: -8px;" id="count-cart"><?=isset($_COOKIE['cart']) ? count(json_decode($_COOKIE['cart'], true)) : '0' ?></div><span class="ti-bag"></span></a></li>
 						<li class="nav-item">
 							<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 						</li>

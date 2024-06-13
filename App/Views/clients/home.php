@@ -92,6 +92,7 @@
 	</section>
 	<!-- End banner Area -->
 
+	<input type="text" id="stt" value="1">
 	<!-- start features Area -->
 	<section class="features-area section_gap">
 		<div class="container">
@@ -242,7 +243,7 @@
 								</div>
 								<div class="prd-bottom">
 
-									<span id="<?=$item['product_id']?>" class="social-info cart" style="cursor: pointer;">
+									<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
 									</span>
@@ -292,7 +293,7 @@
 								</div>
 								<div class="prd-bottom">
 
-									<span id="<?=$item['product_id']?>" class="social-info cart" style="cursor: pointer;">
+									<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
 									</span>
@@ -360,7 +361,7 @@
 									<h6 class="l-through">$<?=round($item['initial_price'])?>.00</h6>
 								</div>
 								<a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>"><h4><?=$item['product_name']?></h4></a>
-								<div id="<?=$item['product_id']?>" style="cursor: pointer;" class="cart add-bag d-flex align-items-center justify-content-center">
+								<div id="<?=$item['product_id']?>" style="cursor: pointer;" class="add-cart add-bag d-flex align-items-center justify-content-center">
 									<a class="add-btn"><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Add to Bag</span>
 								</div>

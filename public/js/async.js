@@ -78,24 +78,72 @@ deleteCategories.forEach(item => {
     }
 });
 
-const cart = document.querySelectorAll('.cart');
+const cart = document.querySelectorAll('.add-cart');
 
 cart.forEach(item => {
     item.onclick = async function () {
         const id = this.id;
+        let quantity = 1;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const page = urlParams.get('page');
+        if (page == 'product-detail') {
+            quantity = document.getElementById('sst').value;
+        }
         try {
             const response = await fetch("./?page=add-cart", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: id, quantity: 1 })
+                body: JSON.stringify({ id: id, quantity: quantity })
             });
             if (response.status == 200) {
                 successMessage('Add to cart successfully');
+                const cart = JSON.parse(getCookie('cart'));
+                document.querySelector('#count-cart').innerText = Object.keys(cart).length;
             }
         } catch (error) {
             console.log(error);
         }
     };
-})
+});
+
+const removeCart = document.querySelectorAll('.remove-cart');
+removeCart.forEach(item => {
+    item.onclick = async function() {
+        const path = item.getAttribute('data-href');
+        const id = this.id;
+        try {
+            const response = await fetch(path, {
+                'method': 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            if (response.status == 200) {
+                successMessage('Add to cart successfully');
+                const cart = JSON.parse(getCookie('cart'));
+                const row = document.querySelector(`tr[data-id="${id}"]`);
+                if (row) {
+                    row.remove();
+                }
+                document.querySelector('#count-cart').innerText = Object.keys(cart).length;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+});
+
+const getCookie = (name) => {
+    let cookieArr = document.cookie.split(";");
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        if (name === cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    return null;
+}
+ 
