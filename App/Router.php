@@ -41,6 +41,7 @@ class Router {
         ],
         'client' => [
             '/' => ['HomeController', 'index'],
+            'search' => ['HomeController', 'search'],
             'shop' => ['ShopController', 'index'],
             'product-detail' => ['ShopController', 'single'],
             'cart' => ['CartController', 'index'],

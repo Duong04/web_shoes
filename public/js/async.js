@@ -248,3 +248,17 @@ const layoutCartEmpty = () => {
                 </div>
             </div>`;
 }
+
+document.querySelector('.search_input').addEventListener('input', async (e) => {
+    const searchData = e.target.value;
+    const limit = 5;
+    const response = await fetch(`./?page=search&limit=${limit}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({data: searchData})
+    });
+
+    console.log(await response.json());
+})
