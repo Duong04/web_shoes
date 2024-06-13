@@ -41,6 +41,22 @@
             setcookie('cart', json_encode($cart), time() + (90 * 24 * 3600), '/');
             echo count($_COOKIE['cart'], true);
         }
+
+        public function updateQuantity() {
+            $cookieCart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
+            $cart = json_decode($cookieCart, true);
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $input = file_get_contents('php://input');
+                $data = json_decode($input, true);
+                if (isset($data['id']) && isset($data['quantity'])) {
+                    $id = $data['id'];
+                    $cart[$id]['quantity'] = $data['quantity'];
+                }
+            }
+            setcookie('cart', json_encode($cart), time() + (90 * 24 * 3600), '/');
+            echo count($_COOKIE['cart'], true);
+        }
         
         public function removeCart() {
             if ($_SERVER['REQUEST_METHOD'] == 'DELETE' && isset($_GET['product_id'])) {

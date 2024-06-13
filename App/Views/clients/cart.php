@@ -61,7 +61,8 @@
 
     <!--================Cart Area =================-->
     <section class="cart_area">
-        <div class="container">
+        <div class="container container-cart">
+            <?php if (count($cart) > 0) { ?>
             <div class="cart_inner">
                 <div class="table-responsive">
                     <table class="table">
@@ -77,13 +78,7 @@
                             <?php 
                             $subTotal = 0;
                             $shipping = 0;
-                            if ($subTotal < 50) {
-                                $shipping = 10;
-                            }else if ($subTotal >= 50 && $subTotal < 100) {
-                                $shipping = 5;
-                            }else {
-                                $shipping = 0;
-                            } 
+                
                             foreach($cart as $item) { 
                                 $total = $item['price'] * $item['quantity'];
                                 $subTotal += $total;
@@ -105,19 +100,28 @@
                                 </td>
                                 <td>
                                     <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="<?=$item['quantity']?>" title="Quantity:"
+                                        <input type="text" name="qty" id="sst-<?=$item['id']?>" maxlength="12" value="<?=$item['quantity']?>" title="Quantity:"
                                             class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        <button onclick="updateQuantity(<?=$item['id']?>, 1)"
                                             class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        <button onclick="updateQuantity(<?=$item['id']?>, -1)"
                                             class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5>$<?=round($total)?>.00</h5>
+                                    <h5 class="total-<?=$item['id']?>">$<?=round($total)?>.00</h5>
                                 </td>
                             </tr>
-                            <?php } $totalAmount = $subTotal + $shipping; ?>
+                            <?php } 
+                                $totalAmount = $subTotal + $shipping; 
+                                if ($subTotal < 50) {
+                                    $shipping = 10;
+                                }else if ($subTotal >= 50 && $subTotal < 100) {
+                                    $shipping = 5;
+                                }else {
+                                    $shipping = 0;
+                                } 
+                            ?>
                             <tr class="bottom_button">
                                 <td>
                                 </td>
@@ -128,10 +132,10 @@
 
                                 </td>
                                 <td>
-                                    <div class="cupon_text d-flex align-items-center justify-content-end">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <a class="primary-btn" href="#">Apply</a>
-                                    </div>
+                                    <form class="cupon_text d-flex align-items-center justify-content-end">
+                                        <input type="text" required placeholder="Coupon Code">
+                                        <button class="primary-btn btn">Apply</button>
+                                    </form>
                                 </td>
                             </tr>
                             <tr>
@@ -145,7 +149,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$<?=round($subTotal)?>.00</h5>
+                                    <h5 class="subtotal">$<?=round($subTotal)?>.00</h5>
                                 </td>
                             </tr>
                             <tr class="shipping_area">
@@ -161,9 +165,9 @@
                                 <td>
                                     <div class="shipping_box">
                                         <ul class="list">
-                                            <li class="<?=$subTotal < 100 && $subTotal >= 50 ? 'active' : ''?>"><a>Flat Rate: $5.00</a></li>
-                                            <li class="<?=$subTotal < 50 ? 'active' : ''?>"><a>Flat Rate: $10.00</a></li>
-                                            <li class="<?=$subTotal >= 100 ? 'active' : ''?>"><a>Free Shipping</a></li>
+                                            <li class="active-1 <?=$subTotal < 100 && $subTotal >= 50 ? 'active' : ''?>"><a>Flat Rate: $5.00</a></li>
+                                            <li class="active-2 <?=$subTotal < 50 ? 'active' : ''?>"><a>Flat Rate: $10.00</a></li>
+                                            <li class="active-3 <?=$subTotal >= 100 ? 'active' : ''?>"><a>Free Shipping</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -179,7 +183,7 @@
                                     <h5>Total Amount</h5>
                                 </td>
                                 <td>
-                                    <h5>$<?=round($totalAmount)?>.00</h5>
+                                    <h5 class="total-amount">$<?=round($totalAmount)?>.00</h5>
                                 </td>
                             </tr>
                             <tr class="out_button_area">
@@ -202,6 +206,26 @@
                     </table>
                 </div>
             </div>
+            <?php } else { ?>
+                <div class="container-fluid mt-10">
+                    <div class="row">
+                    
+                        <div class="col-md-12"> 
+                            <div class="card">
+                                <div class="card-body cart">
+                                    <div class="col-sm-12 empty-cart-cls text-center">
+                                        <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                                        <h3><strong>Your Cart is Empty</strong></h3>
+                                        <h4>Add something to make me happy :)</h4>
+                                        <a href="./" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </section>
     <!--================End Cart Area =================-->

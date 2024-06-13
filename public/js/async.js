@@ -116,19 +116,44 @@ removeCart.forEach(item => {
         const id = this.id;
         try {
             const response = await fetch(path, {
-                'method': 'DELETE',
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
                 },
             });
             if (response.status == 200) {
-                successMessage('Add to cart successfully');
                 const cart = JSON.parse(getCookie('cart'));
                 const row = document.querySelector(`tr[data-id="${id}"]`);
+                let subtotal = 0;
+                let totalAmount = 0;
                 if (row) {
                     row.remove();
                 }
+
+                for(const key in cart) {
+                    subtotal += (cart[key].quantity * cart[key].price);
+                }
+    
+                if (subtotal < 100 && subtotal >= 50) {
+                    totalAmount = subtotal + 5;
+                    document.querySelector('.list .active').classList.remove('active');
+                    document.querySelector('.active-1').classList.add('active');
+                }else if (subtotal < 50) {
+                    totalAmount = subtotal + 10;
+                    document.querySelector('.list .active').classList.remove('active');
+                    document.querySelector('.active-2').classList.add('active');
+                }else {
+                    totalAmount = subtotal + 0;
+                    document.querySelector('.list .active').classList.remove('active');
+                    document.querySelector('.active-3').classList.add('active');
+                }
                 document.querySelector('#count-cart').innerText = Object.keys(cart).length;
+                document.querySelector('.subtotal').innerText = `$${subtotal}.00`;
+                document.querySelector('.total-amount').innerText = `$${totalAmount}.00`;
+
+                if (Object.keys(cart).length == 0) {
+                    document.querySelector('.container-cart').innerHTML = layoutCartEmpty();
+                }
             }
         } catch (error) {
             console.error(error);
@@ -146,4 +171,80 @@ const getCookie = (name) => {
     }
     return null;
 }
- 
+
+const updateQuantity = async (id, count) => {
+    const quantityInput = document.querySelector(`#sst-${id}`);
+    let quantity = parseInt(quantityInput.value);
+
+    quantity += parseInt(count);
+
+    if (quantity >= 10) {
+        quantity = 10;
+    } else if (quantity <= 0) {
+        quantity = 1;
+    }
+
+    quantityInput.value = quantity;
+
+    await updateCartQuantity(id, quantity);
+}
+
+const updateCartQuantity = async (id, quantity) => {
+    try {
+        const response = await fetch(`./?page=update-quantity`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id, quantity: quantity })
+        });
+        if (response.status == 200) {
+            const cart = JSON.parse(getCookie('cart'));
+            const item = cart[id];
+            let subtotal = 0;
+            let totalAmount = 0;
+            for(const key in cart) {
+                subtotal += (cart[key].quantity * cart[key].price);
+            }
+
+            if (subtotal < 100 && subtotal >= 50) {
+                totalAmount = subtotal + 5;
+                document.querySelector('.list .active').classList.remove('active');
+                document.querySelector('.active-1').classList.add('active');
+            }else if (subtotal < 50) {
+                totalAmount = subtotal + 10;
+                document.querySelector('.list .active').classList.remove('active');
+                document.querySelector('.active-2').classList.add('active');
+            }else {
+                totalAmount = subtotal + 0;
+                document.querySelector('.list .active').classList.remove('active');
+                document.querySelector('.active-3').classList.add('active');
+            }
+
+            document.querySelector('.total-'+id).innerText = `$${item.price * item.quantity}.00`;
+            document.querySelector('.subtotal').innerText = `$${subtotal}.00`;
+            document.querySelector('.total-amount').innerText = `$${totalAmount}.00`;
+        }
+    } catch (error) {
+        console.error('Failed to update cart quantity:', error);
+    }
+}
+
+const layoutCartEmpty = () => {
+    return `<div class="container-fluid mt-10">
+                <div class="row">
+                    <div class="col-md-12"> 
+                        <div class="card">
+                            <div class="card-body cart">
+                                <div class="col-sm-12 empty-cart-cls text-center">
+                                    <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                                    <h3><strong>Your Cart is Empty</strong></h3>
+                                    <h4>Add something to make me happy ^_^</h4>
+                                    <a href="./" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>`;
+}

@@ -45,6 +45,7 @@ class Router {
             'product-detail' => ['ShopController', 'single'],
             'cart' => ['CartController', 'index'],
             'add-cart' => ['CartController', 'addCart'],
+            'update-quantity' => ['CartController', 'updateQuantity'],
             'remove-cart' => ['CartController', 'removeCart'],
             'blog' => ['View', './App/Views/clients/blog.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],

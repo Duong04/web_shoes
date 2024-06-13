@@ -91,8 +91,6 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-
-	<input type="text" id="stt" value="1">
 	<!-- start features Area -->
 	<section class="features-area section_gap">
 		<div class="container">

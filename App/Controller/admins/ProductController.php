@@ -44,7 +44,7 @@
                     move_uploaded_file($image['tmp_name'], $product_image);
                     $addProduct = $this->productModel->addProduct($product_name, $product_image, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity);
                     if ($addProduct) {
-                        $this->handleUploadImage($images, $targetDir, $addProduct);
+                        $this->handleUploadImage($addProduct, $targetDir, $images);
                         $this->message->successMessage('Product Created Successfully!');
                     }
                 }else {
@@ -96,14 +96,14 @@
                         move_uploaded_file($image['tmp_name'], $product_image);
                         $updateProduct = $this->productModel->updateProduct($product_name, $product_image, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity, $product_id);
                         if ($updateProduct && $images['name'][0] !== '') {
-                            $this->handleUploadImage($images, $targetDir, $product_id);
+                            $this->handleUploadImage($product_id, $targetDir, $images,);
                         }
                         $_SESSION['checkUpdate'] = true;
                         header('Location: ./?role=admin&page=list-products');
                     }else {
                         $updateProduct = $this->productModel->updateProduct($product_name, null, $new_price, $initial_price, $discount, $description, $is_active, $category_id, $user_id, $quantity, $product_id);
                         if ($updateProduct && $images['name'][0] !== '') {
-                            $this->handleUploadImage($images, $targetDir, $product_id);
+                            $this->handleUploadImage($product_id, $targetDir, $images);
                         }
                         $_SESSION['checkUpdate'] = true;
                         header('Location: ./?role=admin&page=list-products');
@@ -123,7 +123,7 @@
             }
         }
 
-        public function handleUploadImage($images = [], $targetDir, $product_id) {
+        public function handleUploadImage($product_id, $targetDir, $images = []) {
             foreach ($images['name'] as $key => $value) {
                 $path_image = $targetDir.basename($value);
                 move_uploaded_file($images['tmp_name'][$key], $path_image);

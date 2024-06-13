@@ -28,6 +28,13 @@
 	<link rel="stylesheet" href="public/css/nouislider.min.css">
 	<link rel="stylesheet" href="public/css/bootstrap.css">
 	<link rel="stylesheet" href="public/css/main.css">
+	<link href="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css
+	" rel="stylesheet">
+	<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 	<style>
 		.disabled {
 			pointer-events: none;
@@ -166,10 +173,10 @@
 										<?php } ?>
 									</div>
 									<div class="prd-bottom">
-										<a href="" class="social-info">
+										<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 											<span class="ti-bag"></span>
 											<p class="hover-text">add to bag</p>
-										</a>
+										</span>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
@@ -328,6 +335,9 @@
 
 
 
+	<script src="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
+	"></script>
 	<script src="public/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.public/js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -342,6 +352,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
+	<script src="public/js/async.js"></script>
 </body>
 
 </html>
