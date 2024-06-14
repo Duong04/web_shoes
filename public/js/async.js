@@ -250,7 +250,9 @@ const layoutCartEmpty = () => {
 }
 
 document.querySelector('#search_input').onblur = () => {
-    document.querySelector('.search-data').style.display = 'none';
+    setTimeout(() => {
+        document.querySelector('.search-data').style.display = 'none';
+    }, 1000)
 };
 
 document.querySelector('#search_input').onfocus = () => {
