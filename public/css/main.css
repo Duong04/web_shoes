@@ -5830,3 +5830,37 @@ label {
    background-color: #4466f2!important;
    border-color: #4466f2!important;
 }
+
+.search-data {
+  position: absolute;
+  height: auto;
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  padding: 18px 15px;
+  z-index: 99999;
+  box-shadow: 0 0 10px #ccc;
+  left: 0;
+  top: 55px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.search-data-item {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  height: auto;
+}
+
+.search-data-item img {
+  width: 70px;
+}
+
+.search-text span:first-child {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #000;
+}

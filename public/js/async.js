@@ -249,7 +249,15 @@ const layoutCartEmpty = () => {
             </div>`;
 }
 
-document.querySelector('.search_input').addEventListener('input', async (e) => {
+document.querySelector('#search_input').onblur = () => {
+    document.querySelector('.search-data').style.display = 'none';
+};
+
+document.querySelector('#search_input').onfocus = () => {
+    document.querySelector('.search-data').style.display = 'flex';
+};
+
+document.querySelector('#search_input').addEventListener('input', async (e) => {
     const searchData = e.target.value;
     const limit = 5;
     const response = await fetch(`./?page=search&limit=${limit}`, {
@@ -260,5 +268,7 @@ document.querySelector('.search_input').addEventListener('input', async (e) => {
         body: JSON.stringify({data: searchData})
     });
 
-    console.log(await response.json());
-})
+    const responseData = await response.json();
+
+    document.querySelector('.search-data').innerHTML = responseData.data;
+});

@@ -62,7 +62,7 @@
     <!--================Cart Area =================-->
     <section class="cart_area">
         <div class="container container-cart">
-            <?php if (count($cart) > 0) { ?>
+            <?php if (isset($cart) && count($cart) > 0) { ?>
             <div class="cart_inner">
                 <div class="table-responsive">
                     <table class="table">

@@ -35,6 +35,7 @@ $(document).ready(function(){
     $("#search").on("click", function () {
         $("#search_input_box").slideToggle();
         $("#search_input").focus();
+        $("#search_input").val('');
     });
     $("#close_search").on("click", function () {
         $('#search_input_box').slideUp(500);

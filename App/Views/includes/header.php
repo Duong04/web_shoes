@@ -48,13 +48,17 @@
 			</div>
 		</nav>
 	</div>
-	<div class="search_input" id="search_input_box">
+	<div class="search_input position-relative" id="search_input_box">
 		<div class="container">
-			<form class="d-flex justify-content-between">
-				<input type="text" class="form-control" id="search_input" placeholder="Search Here">
+			<form action="./?page=search" method="GET" class="d-flex justify-content-between">
+				<input type="hidden" name="page" value="search">
 				<button type="submit" class="btn"></button>
+				<input type="text" class="form-control" id="search_input" autocomplete="off" name="search" placeholder="Search Here">
 				<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
 			</form>
+		</div>
+		<div class="search-data">
+			<h6 class="mb-0" style="text-align: start;">Please enter search keywords!</h6>
 		</div>
 	</div>
 </header>

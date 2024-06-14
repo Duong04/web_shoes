@@ -89,5 +89,16 @@
             $sql = "UPDATE products SET view = view + 1 WHERE product_id = ?";
             return $this->cud($sql, [$product_id]);
         }
+
+        public function selectLike($data, $limit) {
+            $sql = "SELECT * FROM products P 
+                    INNER JOIN categories C ON C.category_id = P.category_id
+                    WHERE P.product_name LIKE ? OR P.description LIKE ? OR C.category_name LIKE ?";
+            if ($limit != null) {
+                $sql .= " LIMIT $limit";
+            }
+            $likeData = "%$data%";
+            return $this->selectAllWithId($sql, [$likeData, $likeData, $likeData]);
+        }
     }
 ?>
