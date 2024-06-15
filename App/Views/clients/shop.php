@@ -77,7 +77,7 @@
 							foreach($categories as $item) { 
 								$pageName = urlencode($item['category_name'])
 						?> 
-						<li class="main-nav-list child"><a href="./?page=shop&category_name=<?=$pageName?>"><?=$item['category_name']?><span class="number">(13)</span></a></li>
+						<li class="main-nav-list child"><a href="./?page=shop&category_name=<?=$pageName?>"><?=$item['category_name']?><span class="number"></span></a></li>
 						<?php } ?>
 					</ul>
 				</div>

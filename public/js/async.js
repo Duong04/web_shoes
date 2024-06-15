@@ -134,22 +134,8 @@ removeCart.forEach(item => {
                     subtotal += (cart[key].quantity * cart[key].price);
                 }
     
-                if (subtotal < 100 && subtotal >= 50) {
-                    totalAmount = subtotal + 5;
-                    document.querySelector('.list .active').classList.remove('active');
-                    document.querySelector('.active-1').classList.add('active');
-                }else if (subtotal < 50) {
-                    totalAmount = subtotal + 10;
-                    document.querySelector('.list .active').classList.remove('active');
-                    document.querySelector('.active-2').classList.add('active');
-                }else {
-                    totalAmount = subtotal + 0;
-                    document.querySelector('.list .active').classList.remove('active');
-                    document.querySelector('.active-3').classList.add('active');
-                }
+                checkSubTotal(subtotal);
                 document.querySelector('#count-cart').innerText = Object.keys(cart).length;
-                document.querySelector('.subtotal').innerText = `$${subtotal}.00`;
-                document.querySelector('.total-amount').innerText = `$${totalAmount}.00`;
 
                 if (Object.keys(cart).length == 0) {
                     document.querySelector('.container-cart').innerHTML = layoutCartEmpty();
@@ -202,32 +188,36 @@ const updateCartQuantity = async (id, quantity) => {
             const cart = JSON.parse(getCookie('cart'));
             const item = cart[id];
             let subtotal = 0;
-            let totalAmount = 0;
             for(const key in cart) {
                 subtotal += (cart[key].quantity * cart[key].price);
             }
 
-            if (subtotal < 100 && subtotal >= 50) {
-                totalAmount = subtotal + 5;
-                document.querySelector('.list .active').classList.remove('active');
-                document.querySelector('.active-1').classList.add('active');
-            }else if (subtotal < 50) {
-                totalAmount = subtotal + 10;
-                document.querySelector('.list .active').classList.remove('active');
-                document.querySelector('.active-2').classList.add('active');
-            }else {
-                totalAmount = subtotal + 0;
-                document.querySelector('.list .active').classList.remove('active');
-                document.querySelector('.active-3').classList.add('active');
-            }
-
-            document.querySelector('.total-'+id).innerText = `$${item.price * item.quantity}.00`;
-            document.querySelector('.subtotal').innerText = `$${subtotal}.00`;
-            document.querySelector('.total-amount').innerText = `$${totalAmount}.00`;
+            checkSubTotal(subtotal);
+            document.querySelector('.total-'+id).innerText = `$${Math.round(item.price * item.quantity)}.00`;
         }
     } catch (error) {
         console.error('Failed to update cart quantity:', error);
     }
+}
+
+const checkSubTotal = (subtotal) => {
+    let totalAmount = 0;
+    if (subtotal < 100 && subtotal >= 50) {
+        totalAmount = subtotal + 5;
+        document.querySelector('.list .active').classList.remove('active');
+        document.querySelector('.active-1').classList.add('active');
+    }else if (subtotal < 50) {
+        totalAmount = subtotal + 10;
+        document.querySelector('.list .active').classList.remove('active');
+        document.querySelector('.active-2').classList.add('active');
+    }else {
+        totalAmount = subtotal + 0;
+        document.querySelector('.list .active').classList.remove('active');
+        document.querySelector('.active-3').classList.add('active');
+    }
+
+    document.querySelector('.subtotal').innerText = `$${Math.round(subtotal)}.00`;
+    document.querySelector('.total-amount').innerText = `$${Math.round(totalAmount)}.00`;
 }
 
 const layoutCartEmpty = () => {
@@ -273,4 +263,11 @@ document.querySelector('#search_input').addEventListener('input', async (e) => {
     const responseData = await response.json();
 
     document.querySelector('.search-data').innerHTML = responseData.data;
+});
+
+document.querySelector('#price-range').addEventListener('click', () => {
+    const lowerValue = document.querySelector('#lower-value');
+    const upperValue = document.querySelector('#upper-value');
+
+    console.log(lowerValue.innerText,' + ', upperValue.innerText);
 });
