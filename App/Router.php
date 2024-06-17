@@ -11,6 +11,7 @@ require_once './App/Controller/clients/AuthController.php';
 require_once './App/Controller/clients/HomeController.php';
 require_once './App/Controller/clients/ShopController.php';
 require_once './App/Controller/clients/CartController.php';
+require_once './App/Controller/clients/OrderController.php';
 require_once './App/Controller/admins/DashboardController.php';
 require_once './App/Controller/admins/ProductController.php';
 require_once './App/Controller/admins/CategoryController.php';
@@ -48,6 +49,7 @@ class Router {
             'add-cart' => ['CartController', 'addCart'],
             'update-quantity' => ['CartController', 'updateQuantity'],
             'remove-cart' => ['CartController', 'removeCart'],
+            'checkout' => ['OrderController', 'checkout'],
             'blog' => ['View', './App/Views/clients/blog.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],
             'login' => ['AuthController', 'login'],

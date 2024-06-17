@@ -564,3 +564,35 @@ $(document).ready(function(){
   
 
  });
+
+
+ const confirmLogin = () => {
+  Swal.fire({
+      title: 'Warning!',
+      text: 'Please log in to pay!',
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancel",
+      confirmButtonText: "Login",
+      showClass: {
+          popup: `
+              animate__animated
+              animate__fadeInDown
+              animate__faster
+          `
+      },
+      hideClass: {
+          popup: `
+              animate__animated
+              animate__fadeOutUp
+              animate__faster
+          `
+      }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = './?page=login';
+    }
+  });;
+ };

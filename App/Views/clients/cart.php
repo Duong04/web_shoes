@@ -198,7 +198,13 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center justify-content-end" style="gap: 10px;">
-                                        <a class="primary-btn" href="#">Proceed to checkout</a>
+                                        <?php
+                                        if (isset($_SESSION['user_id'])) {
+                                        ?>
+                                        <a class="primary-btn" href="./?page=checkout">Proceed to checkout</a>
+                                        <?php }else { ?>
+                                        <a class="primary-btn text-white" onclick="confirmLogin()">Proceed to checkout</a>
+                                        <?php } ?>
                                     </div>
                                 </td>
                             </tr>
