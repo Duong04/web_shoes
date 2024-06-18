@@ -474,6 +474,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
+    <script src="public/js/async.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
         }
 
         public function index() {
-            $cookieCart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
+            $cookieCart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : '';
             $cart = json_decode($cookieCart, true);
 
             require_once './App/Views/clients/cart.php';

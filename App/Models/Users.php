@@ -21,6 +21,11 @@ class Users extends Database {
         return $this->selectOne($sql, [$token]);
     }
 
+    public function selectId($userId) {
+        $sql = "SELECT * FROM users WHERE user_id = ?";
+        return $this->selectOne($sql, [$userId]);
+    }
+
     public function updateStatusWithToken($token) {
         $sql = "UPDATE users SET status = 'active', token = 0 WHERE token = ?";
         return $this->cud($sql, [$token]);

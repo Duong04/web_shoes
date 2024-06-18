@@ -2,10 +2,13 @@
 namespace App;
 
 require_once './configs/database.php';
-require_once './App/Models/User.php';
+require_once './App/Models/Users.php';
 require_once './App/Models/Category.php';
 require_once './App/Models/Product.php';
 require_once './App/Models/Image.php';
+require_once './App/Models/Order.php';
+require_once './App/Models/OrderDetail.php';
+require_once './App/Models/Payment.php';
 require_once './App/utilities/message.php';
 require_once './App/Controller/clients/AuthController.php';
 require_once './App/Controller/clients/HomeController.php';

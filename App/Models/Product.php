@@ -100,5 +100,10 @@
             $likeData = "%$data%";
             return $this->selectAllWithId($sql, [$likeData, $likeData, $likeData]);
         }
+
+        public function updateQuantity($product_id, $quantity) {
+            $sql = "UPDATE products SET quantity_product = quantity_product - ? WHERE product_id = ?";
+            return $this->cud($sql, [$quantity, $product_id]);
+        }
     }
 ?>

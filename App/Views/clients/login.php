@@ -116,6 +116,7 @@
 	<script src="public/js/gmaps.min.js"></script>
 	<script src="public/js/main.js"></script>
     <script src="public/js/login.js"></script>
+	<script src="public/js/async.js"></script>
 </body>
 
 </html>

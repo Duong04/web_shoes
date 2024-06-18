@@ -70,41 +70,27 @@
                 <a class="tp_btn" href="#">Apply Coupon</a>
             </div>
             <div class="billing_details">
-                <div class="row">
+                <form class="row" action="#" method="POST">
                     <div class="col-lg-8">
                         <h3>Billing Details</h3>
-                        <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                        <div class="row contact_form" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="first" name="name">
-                                <span class="placeholder" data-placeholder="First name"></span>
+                                <input value="<?=$user['phone']?>" placeholder="Number Phone" required type="text" class="form-control" id="number" name="number_phone">
                             </div>
                             <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="last" name="name">
-                                <span class="placeholder" data-placeholder="Last name"></span>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="company" name="company" placeholder="Company name">
-                            </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="number" name="number">
-                                <span class="placeholder" data-placeholder="Phone number"></span>
-                            </div>
-                            <div class="col-md-6 form-group p_star">
-                                <input type="text" class="form-control" id="email" name="compemailany">
-                                <span class="placeholder" data-placeholder="Email Address"></span>
+                                <input value="<?=$user['email']?>" placeholder="Email Address" disabled required type="email" class="form-control" id="email" name="email">
                             </div>
                             <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="add1" name="add1">
-                                <span class="placeholder" data-placeholder="Address line"></span>
+                                <input value="<?=$user['address']?>" placeholder="Address Line" required type="text" class="form-control" id="add1" name="address">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
                             </div>
                             <div class="col-md-12 form-group">
                                 <h3>Order Note</h3>
-                                <textarea class="form-control" name="message" id="message" rows="1" placeholder="Order Notes"></textarea>
+                                <textarea class="form-control" name="order_note" id="message" rows="1" placeholder="Order Notes"></textarea>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="order_box">
@@ -133,18 +119,9 @@
                                 <li><a href="#">Shipping <span>Flat rate: <?=$shipping > 0 ? '$'.$shipping.'.00' : 'Free Ship'?></span></a></li>
                                 <li><a href="#">Total <span>$<?=round($subTotal + $shipping)?>.00</span></a></li>
                             </ul>
-                            <div class="payment_item">
-                                <div class="radion_btn">
-                                    <input type="radio" id="f-option5" name="selector">
-                                    <label for="f-option5">Check payments</label>
-                                    <div class="check"></div>
-                                </div>
-                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
-                                    Store Postcode.</p>
-                            </div>
                             <div class="payment_item active">
                                 <div class="radion_btn">
-                                    <input type="radio" id="f-option6" name="selector">
+                                    <input required type="radio" id="f-option6" name="payment_method" value="Paypal">
                                     <label for="f-option6">Paypal </label>
                                     <img src="img/product/card.jpg" alt="">
                                     <div class="check"></div>
@@ -152,15 +129,24 @@
                                 <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
                                     account.</p>
                             </div>
+                            <div class="payment_item active">
+                                <div class="radion_btn">
+                                    <input checked required type="radio" id="f-option5" name="payment_method" value="Payment on delivery">
+                                    <label for="f-option5">Payment on delivery </label>
+                                    <img src="img/product/card.jpg" alt="">
+                                    <div class="check"></div>
+                                </div>
+                                <p>You will pay when your order is sent to you.</p>
+                            </div>
                             <div class="creat_account">
-                                <input type="checkbox" id="f-option4" name="selector">
+                                <input required type="checkbox" id="f-option4" name="selector">
                                 <label for="f-option4">I’ve read and accept the </label>
                                 <a href="#">terms & conditions*</a>
                             </div>
-                            <a class="primary-btn" href="#">Proceed to Paypal</a>
+                            <button name="submit" class="primary-btn btn w-100">Proceed to Paypal</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
