@@ -77,10 +77,17 @@
 							<?php } ?>
 						</div>
 						<div class="prd-bottom">
+							<?php if ($item['quantity_product'] > 0) { ?>
 							<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 								<span class="ti-bag"></span>
 								<p class="hover-text">add to bag</p>
 							</span>
+							<?php }else { ?>
+							<span class="social-info" onclick="warningSoldold()" style="cursor: pointer;">
+								<span class="ti-bag"></span>
+								<p class="hover-text">add to bag</p>
+							</span>
+							<?php } ?>
 							<a href="" class="social-info">
 								<span class="lnr lnr-heart"></span>
 								<p class="hover-text">Wishlist</p>

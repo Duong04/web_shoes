@@ -95,7 +95,11 @@
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
 						<div class="card_area d-flex align-items-center">
+							<?php if ($product['quantity_product'] > 0) {?>
 							<span class="primary-btn add-cart" id="<?=$product['product_id']?>">Add to Cart</span>
+							<?php }else { ?>
+							<span class="primary-btn" onclick="warningSoldold()">Add to Cart</span>
+							<?php } ?>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>

@@ -241,10 +241,17 @@
 								</div>
 								<div class="prd-bottom">
 
+									<?php if ($item['quantity_product'] > 0) { ?>
 									<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
 									</span>
+									<?php }else { ?>
+									<span class="social-info" onclick="warningSoldold()" style="cursor: pointer;">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</span>
+									<?php } ?>
 									<a href="" class="social-info">
 										<span class="lnr lnr-heart"></span>
 										<p class="hover-text">Wishlist</p>
@@ -291,10 +298,17 @@
 								</div>
 								<div class="prd-bottom">
 
+									<?php if ($item['quantity_product'] > 0) { ?>
 									<span id="<?=$item['product_id']?>" class="social-info add-cart" style="cursor: pointer;">
 										<span class="ti-bag"></span>
 										<p class="hover-text">add to bag</p>
 									</span>
+									<?php }else { ?>
+									<span class="social-info" onclick="warningSoldold()" style="cursor: pointer;">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</span>
+									<?php } ?>
 									<a href="" class="social-info">
 										<span class="lnr lnr-heart"></span>
 										<p class="hover-text">Wishlist</p>
@@ -360,8 +374,13 @@
 								</div>
 								<a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>"><h4><?=$item['product_name']?></h4></a>
 								<div id="<?=$item['product_id']?>" style="cursor: pointer;" class="add-cart add-bag d-flex align-items-center justify-content-center">
+									<?php if ($item['quantity_product'] > 0) { ?>
 									<a class="add-btn"><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Add to Bag</span>
+									<?php }else{ ?>
+									<a onclick="warningSoldold()"><span class="ti-bag"></span></a>
+									<span class="add-text text-uppercase">Add to Bag</span>
+									<?php } ?>
 								</div>
 							</div>
 						</div>

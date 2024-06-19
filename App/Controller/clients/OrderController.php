@@ -39,13 +39,12 @@
                         }
                         $this->payment->insertPayment($paymentMethod, $amount, $order);
                         
-                        $this->message->successMessage('Order Success!');
+                        $expire = time() - (90 * 24 * 3600); 
+                        setcookie('cart', json_encode($carts), $expire, '/');
+                        header('Location: ./?page=thanks');
+                        exit();
                     }
-                    $expire = time() - (90 * 24 * 3600); 
-                    setcookie('cart', json_encode($carts), $expire, '/');
-                    exit();
                 }
-
             }else {
                 header('Location: ./?page=404');
                 exit();

@@ -70,7 +70,7 @@
                 <a class="tp_btn" href="#">Apply Coupon</a>
             </div>
             <div class="billing_details">
-                <form class="row" action="#" method="POST">
+                <form class="row" action="" method="POST">
                     <div class="col-lg-8">
                         <h3>Billing Details</h3>
                         <div class="row contact_form" novalidate="novalidate">

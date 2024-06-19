@@ -54,6 +54,7 @@ class Router {
             'remove-cart' => ['CartController', 'removeCart'],
             'checkout' => ['OrderController', 'checkout'],
             'blog' => ['View', './App/Views/clients/blog.php'],
+            'thanks' => ['View', './App/Views/clients/thanks.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],
             'login' => ['AuthController', 'login'],
             'register' => ['AuthController', 'register'],

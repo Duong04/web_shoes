@@ -565,6 +565,27 @@ $(document).ready(function(){
 
  });
 
+const warningSoldold = () => {
+  Swal.fire({
+      title: 'Warning!',
+      text: 'This product is sold out!',
+      icon: "warning",
+      showClass: {
+          popup: `
+              animate__animated
+              animate__fadeInDown
+              animate__faster
+          `
+      },
+      hideClass: {
+          popup: `
+              animate__animated
+              animate__fadeOutUp
+              animate__faster
+          `
+      }
+  });
+}
 
  const confirmLogin = () => {
   Swal.fire({
