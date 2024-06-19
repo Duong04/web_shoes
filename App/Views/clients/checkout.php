@@ -35,6 +35,9 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script src="
+	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
+	"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -100,9 +103,26 @@
                                 <?php
                                 $subTotal = 0; 
                                 foreach($carts as $item) { 
-                                    $subTotal += ($item['price'] * $item['quantity']);
+                                    $itemProduct = $product->selectProductById($item['id']);
+                                    $quantity = $itemProduct['quantity_product'] < $item['quantity'] ? $itemProduct['quantity_product'] : $item['quantity'];
+                                    $subTotal += ($item['price'] * $quantity);
+                                    if ($itemProduct['quantity_product'] < $item['quantity']) {
+                                        echo "<script>
+                                            Swal.fire({
+                                                title: 'Warning!',
+                                                text: 'This product ".$item['product_name']." is not in sufficient quantity for you!',
+                                                icon: 'info',
+                                                showClass: {
+                                                    popup: 'animate__animated animate__fadeInDown animate__faster'
+                                                },
+                                                hideClass: {
+                                                    popup: 'animate__animated animate__fadeOutDown animate__faster'
+                                                }
+                                            });
+                                        </script>";
+                                    }
                                 ?>
-                                <li><a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>" class="d-flex align-items-center" style="gap:10px"><span class="text-black" style="line-height: 25px; overflow: hidden;display: block;max-height: 1.5rem;-webkit-line-clamp: 1;display: -webkit-box;text-overflow: ellipsis;"><?=$item['product_name']?></span> <span style="width:50px;">x <?=$item['quantity']?></span> <span class="last">$<?=round($item['price'])?>.00</span></a></li>
+                                <li><a href="./?page=product-detail&name=<?=urlencode($item['product_name'])?>" class="d-flex align-items-center" style="gap:10px"><span class="text-black" style="line-height: 25px; overflow: hidden;display: block;max-height: 1.5rem;-webkit-line-clamp: 1;display: -webkit-box;text-overflow: ellipsis;"><?=$item['product_name']?></span> <span style="width:50px;">x <?=$quantity?></span> <span class="last">$<?=round($item['price'])?>.00</span></a></li>
                                 <?php 
                                 } 
                                     if ($subTotal < 50) {
@@ -156,9 +176,6 @@
 	<?php include_once './App/Views/includes/footer.php' ?>
 	<!-- End footer Area -->
 
-	<script src="
-	https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js
-	"></script>
 	<script src="public/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.public/js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>

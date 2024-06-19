@@ -17,6 +17,7 @@
         }
         public function checkout() {
             ob_start();
+            $product = $this->product;
 
             $carts = json_decode($_COOKIE['cart'], true); 
             if (isset($carts) && count($carts) > 0 && isset($_SESSION['user_id'])) {
@@ -34,8 +35,10 @@
                     $order = $this->order->insertOrder($subTotal, $address, $shipping, $userId, $orderNote, $numberPhone);
                     if ($order) {
                         foreach ($carts as $item) {
-                            $this->orderDetail->insertOrderDetail($item['id'], $item['quantity'], $item['price'], $order);
-                            $this->product->updateQuantity($item['id'], $item['quantity']);
+                            $itemProduct = $product->selectProductById($item['id']);
+                            $quantity = $itemProduct['quantity_product'] < $item['quantity'] ? $itemProduct['quantity_product'] : $item['quantity'];
+                            $this->orderDetail->insertOrderDetail($item['id'], $quantity, $item['price'], $order);
+                            $this->product->updateQuantity($item['id'], $quantity);
                         }
                         $this->payment->insertPayment($paymentMethod, $amount, $order);
                         
