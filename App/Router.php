@@ -10,15 +10,16 @@ require_once './App/Models/Order.php';
 require_once './App/Models/OrderDetail.php';
 require_once './App/Models/Payment.php';
 require_once './App/utilities/message.php';
-require_once './App/Controller/clients/AuthController.php';
-require_once './App/Controller/clients/HomeController.php';
-require_once './App/Controller/clients/ShopController.php';
-require_once './App/Controller/clients/CartController.php';
-require_once './App/Controller/clients/OrderController.php';
-require_once './App/Controller/admins/DashboardController.php';
-require_once './App/Controller/admins/ProductController.php';
-require_once './App/Controller/admins/CategoryController.php';
-require_once './App/Controller/admins/ImageController.php';
+require_once './App/Controllers/clients/AuthController.php';
+require_once './App/Controllers/clients/HomeController.php';
+require_once './App/Controllers/clients/ShopController.php';
+require_once './App/Controllers/clients/CartController.php';
+require_once './App/Controllers/clients/OrderController.php';
+require_once './App/Controllers/admins/DashboardController.php';
+require_once './App/Controllers/admins/ProductController.php';
+require_once './App/Controllers/admins/CategoryController.php';
+require_once './App/Controllers/admins/ImageController.php';
+require_once './App/Controllers/admins/OrderManagementController.php';
 require_once 'public/library/sendmail/sendmail.php';
 
 
@@ -42,6 +43,7 @@ class Router {
             'edit-image' => ['ImageController', 'edit'],
             'update-image' => ['ImageController', 'update'],
             'delete-image' => ['ImageController', 'delete'],
+            'orders' => ['OrderManagementController', 'index'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],
