@@ -1,0 +1,154 @@
+.order_box {
+    background: #e5ecee;
+    padding: 30px; }
+    .order_box h2 {
+      border-bottom: 1px solid #dddddd;
+      font-size: 18px;
+      font-weight: 500;
+      color: #222222;
+      padding-bottom: 15px; }
+    .order_box .list li a {
+      font-size: 14px;
+      color: #777777;
+      font-weight: normal;
+      border-bottom: 1px solid #eeeeee;
+      display: block;
+      line-height: 42px; }
+      .order_box .list li a span {
+        float: right; }
+      .order_box .list li a .middle {
+        float: none;
+        width: 50px;
+        text-align: right;
+        display: inline-block;
+        margin-left: 30px;
+        color: #222222; }
+    .order_box .list li:nth-child(4) a .middle {
+      margin-left: 48px; }
+    .order_box .list_2 li a {
+      text-transform: uppercase;
+      color: #222222;
+      font-weight: 500; }
+      .order_box .list_2 li a span {
+        color: #777777;
+        text-transform: capitalize; }
+    .order_box .list_2 li:last-child a span {
+      color: #222222; }
+    .order_box .payment_item h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #222222;
+      font-weight: 500;
+      padding-left: 22px;
+      position: relative;
+      margin-bottom: 15px;
+      margin-top: 15px; }
+      .order_box .payment_item h4:before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1px solid #cdcdcd;
+        background: #fff;
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%); }
+      .order_box .payment_item h4:after {
+        content: "";
+        height: 4px;
+        width: 4px;
+        background: #fff;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        left: 5px;
+        top: 8px; }
+      .order_box .payment_item h4 img {
+        padding-left: 60px; }
+    .order_box .payment_item p {
+      background: #fff;
+      padding: 20px; }
+    .order_box .payment_item.active h4:before {
+      background: #ffba00;
+      border-color: #ffba00; }
+    .order_box .creat_account {
+      margin-bottom: 15px; }
+      .order_box .creat_account label {
+        padding-left: 10px;
+        font-size: 12px;
+        color: #222222; }
+      .order_box .creat_account a {
+        color: #c5322d; }
+    .order_box .primary-btn {
+      display: block;
+      line-height: 38px;
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: 2px; }
+      .order_box .primary-btn:hover:before {
+        left: 310px; }
+  
+  .order_details .title_confirmation {
+    text-align: center;
+    color: #28d500;
+    font-size: 18px;
+    margin-bottom: 80px; }
+  
+  .order_d_inner .details_item h4 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    font-size: 18px;
+    color: #222222;
+    padding-left: 18px; }
+  .order_d_inner .details_item .list {
+    padding-left: 18px; }
+    @media (min-width: 767px) {
+      .order_d_inner .details_item .list {
+        margin-bottom: 30px; } }
+    .order_d_inner .details_item .list li {
+      margin-bottom: 8px; }
+      .order_d_inner .details_item .list li:last-child {
+        margin-bottom: 0px; }
+      .order_d_inner .details_item .list li a {
+        font-size: 14px;
+        color: #222222;
+        font-family: "Roboto", sans-serif; }
+        .order_d_inner .details_item .list li a span {
+          width: 145px;
+          display: inline-block;
+          color: #777777; }
+  
+  .order_details_table {
+    background: #e5ecee;
+    padding: 30px;
+    margin-top: 75px; }
+    @media (min-width: 767px) {
+      .order_details_table {
+        margin-top: 45px; } }
+    .order_details_table h2 {
+      color: #222222;
+      font-size: 18px;
+      padding-bottom: 15px; }
+    .order_details_table .table {
+      margin-bottom: 0px; }
+      .order_details_table .table thead tr th {
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        font-family: "Roboto", sans-serif;
+        font-weight: normal; }
+      .order_details_table .table tbody tr td p {
+        margin-bottom: 0px; }
+      .order_details_table .table tbody tr td h5 {
+        color: #222222;
+        margin-bottom: 0px; }
+      .order_details_table .table tbody tr td h4 {
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        color: #222222; }
+      .order_details_table .table tbody tr:last-child td {
+        border-top: 1px solid #ddd; }
+        .order_details_table .table tbody tr:last-child td p {
+          color: #222222; }

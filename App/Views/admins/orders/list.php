@@ -39,7 +39,7 @@
                             <td><?=$i?></td>
                             <td><?=$item['user_name']?></td>
                             <td><?=$item['number_phone']?></td>
-                            <td><?='$'.$item['shipping_money'].'.00'?></td>
+                            <td><?=$item['shipping_money'] > 0 ? '$'.$item['shipping_money'].'.00' : 'Free Ship'?></td>
                             <td><?='$'.round($item['total_amount']).'.00'?></td>
                             <td><?='$'. round($item['amount']). '.00'?></td>
                             <td><?=$item['order_status']?></td>

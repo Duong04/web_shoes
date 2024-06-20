@@ -44,6 +44,7 @@ class Router {
             'update-image' => ['ImageController', 'update'],
             'delete-image' => ['ImageController', 'delete'],
             'orders' => ['OrderManagementController', 'index'],
+            'order-detail' => ['OrderManagementController', 'orderDetail'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],

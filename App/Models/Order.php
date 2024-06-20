@@ -7,11 +7,19 @@
         }
 
         public function selectOrders() {
-            $sql = "SELECT O.*, OD.*, P.*, U.*, O.status as order_status FROM orders O 
-                    INNER JOIN order_details OD ON O.order_id = OD.order_id
+            $sql = "SELECT O.*, P.*, U.*, O.status as order_status FROM orders O 
                     INNER JOIN payments P ON O.order_id = P.order_id
                     INNER JOIN users U ON O.user_id = U.user_id";
             return $this->selectAll($sql);
+        }
+
+        public function selectOrdersById($id) {
+            $sql = "SELECT O.*, OD.*, P.*, U.*, O.status as order_status, P.status as payment_status FROM orders O 
+                    INNER JOIN order_details OD ON O.order_id = OD.order_id
+                    INNER JOIN payments P ON O.order_id = P.order_id
+                    INNER JOIN users U ON O.user_id = U.user_id
+                    WHERE O.order_id = ?";
+            return $this->selectOne($sql, [$id]);
         }
     }
 ?>
