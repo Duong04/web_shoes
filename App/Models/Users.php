@@ -55,6 +55,11 @@ class Users extends Database {
         $sql = "UPDATE users SET status = ? WHERE user_id = ?";
         return $this->cud($sql, [$status, $id]);
     }
+
+    public function updateRole($userId, $roleId) {
+        $sql = "UPDATE users SET role_id = ? WHERE user_id = ?";
+        return $this->cud($sql, [$roleId, $userId]);
+    }
 }
 
 ?>

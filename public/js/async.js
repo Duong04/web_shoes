@@ -126,6 +126,31 @@ document.querySelectorAll('.update-status').forEach(item => {
     }
 });
 
+document.querySelectorAll('.update-role').forEach(item => {
+    item.onclick = async () => {
+        const roleId = item.getAttribute('data-role-id');
+        const userId = item.getAttribute('data-user-id');
+        const roleName = item.getAttribute('data-role-name');
+
+        try {
+            const response = await fetch('./?role=admin&page=update-role', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({userId: userId, roleId: roleId})
+            });
+
+            if (response.status == 200) {
+                successMessage('Updated role user successfully');
+                document.querySelector(`tr[data-id="${userId}"] .role-name`).innerText = roleName;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+});
+
 const cart = document.querySelectorAll('.add-cart');
 
 cart.forEach(item => {

@@ -49,6 +49,7 @@ class Router {
             'update-order' => ['OrderManagementController', 'updateOrder'],
             'list-users' => ['UserController', 'index'],
             'update-status' => ['UserController', 'updateStatus'],
+            'update-role' => ['UserController', 'updateRole'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],

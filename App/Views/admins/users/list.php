@@ -60,7 +60,7 @@
                             <td><?=isset($item['phone']) ? $item['phone'] : 'No Info!'?></td>
                             <td><?=isset($item['address']) ? $item['address'] : 'No Info!'?></td>
                             <td class="status"><?=$item['status']?></td>
-                            <td><?=$item['role_name']?></td>
+                            <td class="role-name"><?=$item['role_name']?></td>
                             <?php 
                             if ($_SESSION['role'] != 'Admin' || $_SESSION['role'] != 'Manager') {
                             ?>
@@ -74,7 +74,7 @@
                                             continue;
                                         }
                                 ?>
-                                <button class="btn <?=$bgColor[$index]?>"><?=$role['role_name']?></button>
+                                <button data-user-id="<?=$item['user_id']?>" data-role-id="<?=$role['role_id']?>" data-role-name="<?=$role['role_name']?>" class="btn <?=$bgColor[$index]?> update-role"><?=$role['role_name']?></button>
                                 <?php $index++; } }?>
                             </td>
                             <?php } ?>

@@ -23,5 +23,16 @@
                 $this->user->updateStatus($userId, $status);
             }
         }
+
+        public function updateRole() {
+            if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+                $input = file_get_contents('php://input');
+                $data = json_decode($input, true);
+                $userId = $data['userId'];
+                $roleId = $data['roleId'];
+
+                $this->user->updateRole($userId, $roleId);
+            }
+        }
     }
 ?>
