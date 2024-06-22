@@ -110,6 +110,7 @@
     <script src="./public/js/demo/datatables-demo.js"></script>
     <script src="./public/js/sb-admin-2.min.js"></script>
     <script src="./public/js/async.js"></script>
+    <script src="./public/js/admin.js"></script>
 </body>
 
 </html>

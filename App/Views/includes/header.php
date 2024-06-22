@@ -36,6 +36,7 @@
 								 aria-expanded="false" src="./public/img/users/z4885097517559_dfcda27d81f3d4d5aa2eb33563833159.jpg" alt="">
 							<ul class="dropdown-menu" style="left: -80px;">
 								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="">Profile</a></li>
+								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="./?page=order-tracking">Order tracking</a></li>
 								<?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'Admin') { ?>
 									<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="./?role=admin&page=dashboard">Administrators</a></li>
 								<?php } ?>

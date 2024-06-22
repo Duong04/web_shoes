@@ -1,4 +1,4 @@
-const deleteCategories = document.querySelectorAll('.delete');
+const deleteItem = document.querySelectorAll('.delete');
 
 const confirmButton = async (title, text) => {
     return Swal.fire({
@@ -50,7 +50,7 @@ const successMessage = (text) => {
     });
 }
 
-deleteCategories.forEach(item => {
+deleteItem.forEach(item => {
     item.onclick = async function (){
         const id = this.id;
         const path = document.getElementById(id).getAttribute('data-href');
@@ -74,6 +74,30 @@ deleteCategories.forEach(item => {
             } catch (error) {
                 console.log(error);
             }
+        }
+    }
+});
+
+document.querySelectorAll('.update-order').forEach(item => {
+    
+    item.onclick = async () => {
+        const id = item.getAttribute('data-order-id');
+        const status = item.getAttribute('data-original-title');
+        try {
+            const response = await fetch('./?role=admin&page=update-order', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: id, status: status})
+            });
+
+            if (response.status == 200) {
+                successMessage('Add to cart successfully');
+                document.querySelector(`tr[data-id="${id}"] .status`).innerText = status;
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 });
@@ -239,17 +263,19 @@ const layoutCartEmpty = () => {
             </div>`;
 }
 
-document.querySelector('#search_input').onblur = () => {
+const searchInput = document.querySelector('#search_input');
+
+searchInput.onblur = () => {
     setTimeout(() => {
         document.querySelector('.search-data').style.display = 'none';
     }, 1000)
 };
 
-document.querySelector('#search_input').onfocus = () => {
+searchInput.onfocus = () => {
     document.querySelector('.search-data').style.display = 'flex';
 };
 
-document.querySelector('#search_input').addEventListener('input', async (e) => {
+searchInput.addEventListener('input', async (e) => {
     const searchData = e.target.value;
     const limit = 5;
     const response = await fetch(`./?page=search&limit=${limit}`, {

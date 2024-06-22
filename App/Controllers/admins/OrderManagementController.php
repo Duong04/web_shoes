@@ -22,4 +22,15 @@
                 require_once './App/Views/admins/layoutAdmin.php';
             }
         }
+
+        public function updateOrder() {
+            if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+                $input = file_get_contents('php://input');
+                $data = json_decode($input, true);
+                $orderId = $data['id'];
+                $status = $data['status'];
+
+                $this->order->updateStatus($orderId, $status);
+            }
+        }
     }

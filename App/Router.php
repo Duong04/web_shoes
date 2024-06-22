@@ -45,6 +45,7 @@ class Router {
             'delete-image' => ['ImageController', 'delete'],
             'orders' => ['OrderManagementController', 'index'],
             'order-detail' => ['OrderManagementController', 'orderDetail'],
+            'update-order' => ['OrderManagementController', 'updateOrder'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],
@@ -56,6 +57,7 @@ class Router {
             'update-quantity' => ['CartController', 'updateQuantity'],
             'remove-cart' => ['CartController', 'removeCart'],
             'checkout' => ['OrderController', 'checkout'],
+            'order-tracking' => ['OrderController', 'orders'],
             'blog' => ['View', './App/Views/clients/blog.php'],
             'thanks' => ['View', './App/Views/clients/thanks.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],

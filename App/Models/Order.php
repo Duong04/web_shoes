@@ -21,5 +21,10 @@
                     WHERE O.order_id = ?";
             return $this->selectOne($sql, [$id]);
         }
+
+        public function updateStatus($id, $status) {
+            $sql = "UPDATE orders SET status = ? WHERE order_id = ?";
+            return $this->cud($sql, [$status, $id]);
+        }
     }
 ?>

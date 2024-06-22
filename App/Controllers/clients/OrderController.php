@@ -55,5 +55,9 @@
 
             ob_end_flush();
         }
+
+        public function orders() {
+            require_once './App/Views/clients/orders.php';
+        }
     }
 ?>
