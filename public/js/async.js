@@ -93,7 +93,31 @@ document.querySelectorAll('.update-order').forEach(item => {
             });
 
             if (response.status == 200) {
-                successMessage('Add to cart successfully');
+                successMessage('Updated status order successfully');
+                document.querySelector(`tr[data-id="${id}"] .status`).innerText = status;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+});
+
+document.querySelectorAll('.update-status').forEach(item => {
+    item.onclick = async () => {
+        const id = item.getAttribute('data-user-id');
+        const status = item.getAttribute('data-original-title');
+
+        try {
+            const response = await fetch('./?role=admin&page=update-status', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id: id, status: status})
+            });
+
+            if (response.status == 200) {
+                successMessage('Updated status user successfully');
                 document.querySelector(`tr[data-id="${id}"] .status`).innerText = status;
             }
         } catch (error) {

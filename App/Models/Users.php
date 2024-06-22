@@ -45,6 +45,16 @@ class Users extends Database {
         $sql = "UPDATE users SET password = ?, otp = 0 WHERE email = ?";
         return $this->cud($sql, [$password, $email]);
     }
+    
+    public function selectRoles() {
+        $sql = "SELECT * FROM roles";
+        return $this->selectAll($sql);
+    }
+
+    public function updateStatus($id, $status) {
+        $sql = "UPDATE users SET status = ? WHERE user_id = ?";
+        return $this->cud($sql, [$status, $id]);
+    }
 }
 
 ?>

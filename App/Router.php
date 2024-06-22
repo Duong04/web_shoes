@@ -20,6 +20,7 @@ require_once './App/Controllers/admins/ProductController.php';
 require_once './App/Controllers/admins/CategoryController.php';
 require_once './App/Controllers/admins/ImageController.php';
 require_once './App/Controllers/admins/OrderManagementController.php';
+require_once './App/Controllers/admins/UserController.php';
 require_once 'public/library/sendmail/sendmail.php';
 
 
@@ -46,6 +47,8 @@ class Router {
             'orders' => ['OrderManagementController', 'index'],
             'order-detail' => ['OrderManagementController', 'orderDetail'],
             'update-order' => ['OrderManagementController', 'updateOrder'],
+            'list-users' => ['UserController', 'index'],
+            'update-status' => ['UserController', 'updateStatus'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],
