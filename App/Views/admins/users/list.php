@@ -5,7 +5,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <a href="./?role=admin&page=add-product" class="btn btn-success">Create User</a>
+        <a href="./?role=admin&page=create-user" class="btn btn-success">Create User</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

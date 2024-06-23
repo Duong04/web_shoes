@@ -11,6 +11,12 @@ class Users extends Database {
         return $this->cud($sql, [$userName, $email, $password, $token]);
     }
 
+    public function inserUsers_2($userName, $email, $password, $roleId, $status) {
+        $sql = "INSERT INTO users (user_name, email, password, role_id, status, created_at, updated_at, avatar) 
+                VALUES(?, ?, ?, ?, ?, NOW(), NOW(), 'public/img/users/default-image.png')";
+        return $this->cud($sql, [$userName, $email, $password, $roleId, $status]);
+    }
+
     public function selectEmail($email) {
         $sql = "SELECT * FROM users INNER JOIN roles ON users.role_id = roles.role_id WHERE users.email = ?";
         return $this->selectOne($sql, [$email]);
