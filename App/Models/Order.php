@@ -13,6 +13,14 @@
             return $this->selectAll($sql);
         }
 
+        public function selectOrderWithUserId($status, $userId) {
+            $sql = "SELECT O.*, P.*, U.*, O.status as order_status, P.status as payment_status FROM orders O 
+                    INNER JOIN payments P ON O.order_id = P.order_id
+                    INNER JOIN users U ON O.user_id = U.user_id
+                    WHERE O.user_id = ? AND O.status = ?";
+            return $this->selectAllWithId($sql, [$userId, $status]);
+        }
+
         public function selectOrdersById($id) {
             $sql = "SELECT O.*, OD.*, P.*, U.*, O.status as order_status, P.status as payment_status FROM orders O 
                     INNER JOIN order_details OD ON O.order_id = OD.order_id

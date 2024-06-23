@@ -57,7 +57,18 @@
         }
 
         public function orders() {
-            require_once './App/Views/clients/orders.php';
+            if (isset($_SESSION['user_id'])) {
+                $userId = $_SESSION['user_id'];
+                $pending = $this->order->selectOrderWithUserId('pending', $userId);
+                $processing = $this->order->selectOrderWithUserId('processing', $userId);
+                $shipped = $this->order->selectOrderWithUserId('shipped', $userId);
+                $delivered = $this->order->selectOrderWithUserId('delivered', $userId);
+                $cancelled = $this->order->selectOrderWithUserId('cancelled', $userId);
+
+                require_once './App/Views/clients/orders.php';
+            }else {
+                require_once './App/Views/clients/404.php';
+            }
         }
     }
 ?>
