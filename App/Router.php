@@ -21,6 +21,7 @@ require_once './App/Controllers/admins/CategoryController.php';
 require_once './App/Controllers/admins/ImageController.php';
 require_once './App/Controllers/admins/OrderManagementController.php';
 require_once './App/Controllers/admins/UserController.php';
+require_once './App/Controllers/admins/RoleController.php';
 require_once 'public/library/sendmail/sendmail.php';
 
 
@@ -51,6 +52,8 @@ class Router {
             'create-user' => ['UserController', 'store'],
             'update-status' => ['UserController', 'updateStatus'],
             'update-role' => ['UserController', 'updateRole'],
+            'list-roles' => ['RoleController', 'index'],
+            'create-role' => ['RoleController', 'store'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],

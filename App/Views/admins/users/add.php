@@ -6,7 +6,7 @@
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <h4>Create Category</h4>
+        <h4>Create User</h4>
         <div class="container">
             <form action="" method="POST" class="row">
                 <div class="mb-3 col-12 col-lg-6">

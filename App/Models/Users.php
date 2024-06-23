@@ -57,6 +57,12 @@ class Users extends Database {
         return $this->selectAll($sql);
     }
 
+    public function insertRole($roleName) {
+        $sql = "INSERT INTO roles (role_name, created_at, updated_at) 
+                VALUES (?, NOW(), NOW())";
+        return $this->cud($sql, [$roleName]);
+    }
+
     public function updateStatus($id, $status) {
         $sql = "UPDATE users SET status = ? WHERE user_id = ?";
         return $this->cud($sql, [$status, $id]);

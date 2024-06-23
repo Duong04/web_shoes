@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion position-sticky" id="accordionSidebar" style="height: 100vh; top: 0;">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./">
@@ -65,27 +65,19 @@
             <span>Orders</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="./?role=admin&page=list-users">
-            <i class="fa-solid fa-user"></i>
-            <span>Users</span></a>
-    </li>
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <span>Users</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <h6 class="collapse-header">User</h6>
+                <a class="collapse-item" href="./?role=admin&page=list-users">List Users</a>
+                <?php if ($_SESSION['role'] == 'Admin' || $_SESSION['role'] == 'Manager') {?>
+                <a class="collapse-item" href="./?role=admin&page=create-user">Create User</a>
+                <a class="collapse-item" href="./?role=admin&page=list-roles">Roles</a>
+                <?php } ?>
             </div>
         </div>
     </li>
