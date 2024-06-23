@@ -51,9 +51,11 @@ class Router {
             'list-users' => ['UserController', 'index'],
             'create-user' => ['UserController', 'store'],
             'update-status' => ['UserController', 'updateStatus'],
-            'update-role' => ['UserController', 'updateRole'],
+            'update-user-role' => ['UserController', 'updateRole'],
             'list-roles' => ['RoleController', 'index'],
             'create-role' => ['RoleController', 'store'],
+            'edit-role' => ['RoleController', 'edit'],
+            'update-role' => ['RoleController', 'update'],
         ],
         'client' => [
             '/' => ['HomeController', 'index'],

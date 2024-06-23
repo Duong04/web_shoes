@@ -40,7 +40,7 @@
                             <td><?=$item['created_at']?></td>
                             <td><?=$item['updated_at']?></td>
                             <td>
-                                <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="./?role=admin&page=edit-role&role_id=<?=$item['role_id']?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                         </tr>
                         <?php } ?>

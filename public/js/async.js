@@ -133,7 +133,7 @@ document.querySelectorAll('.update-role').forEach(item => {
         const roleName = item.getAttribute('data-role-name');
 
         try {
-            const response = await fetch('./?role=admin&page=update-role', {
+            const response = await fetch('./?role=admin&page=update-user-role', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

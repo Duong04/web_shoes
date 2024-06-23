@@ -63,12 +63,32 @@ class Users extends Database {
         return $this->cud($sql, [$roleName]);
     }
 
+    public function selectRoleById($roleId) {
+        $sql = "SELECT * FROM roles WHERE role_id = ?";
+        return $this->selectOne($sql, [$roleId]);
+    }
+
+    public function selectNameRole($roleName) {
+        $sql = "SELECT * FROM roles WHERE role_name = ?";
+        return $this->selectOne($sql, [$roleName]);
+    }
+
+    public function checkName($roleName, $roleId) {
+        $sql = "SELECT * FROM roles WHERE role_name = ? AND role_id != ?";
+        return $this->selectOne($sql, [$roleName, $roleId]);
+    }
+
+    public function updateRole($roleName, $roleId) {
+        $sql = "UPDATE roles SET role_name = ?, updated_at = NOW() WHERE role_id = ?";
+        return $this->cud($sql, [$roleName, $roleId]);
+    }
+
     public function updateStatus($id, $status) {
         $sql = "UPDATE users SET status = ? WHERE user_id = ?";
         return $this->cud($sql, [$status, $id]);
     }
 
-    public function updateRole($userId, $roleId) {
+    public function updateRoleUser($userId, $roleId) {
         $sql = "UPDATE users SET role_id = ? WHERE user_id = ?";
         return $this->cud($sql, [$roleId, $userId]);
     }

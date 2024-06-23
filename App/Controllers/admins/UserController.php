@@ -51,7 +51,7 @@
                 $userId = $data['userId'];
                 $roleId = $data['roleId'];
 
-                $this->user->updateRole($userId, $roleId);
+                $this->user->updateRoleUser($userId, $roleId);
             }
         }
     }
