@@ -1,9 +1,11 @@
 <?php 
     class AuthController {
         private $UserModel;
+        private $message;
         private $url = 'http://localhost/php/php_oop/web_shoes';
         public function __construct() {
             $this->UserModel = new Users();
+            $this->message = new Message();
         }
 
         public function login() {
@@ -32,6 +34,9 @@
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
                                     $_SESSION['status'] = $status;
+                                    $_SESSION['email'] = $user['email'];
+                                    $_SESSION['phone'] = $user['phone'];
+                                    $_SESSION['address'] = $user['address'];
                                     header('Location: ./?role=admin&page=dashboard');
                                 }else {
                                     $_SESSION['userName'] = $user_name;
@@ -39,6 +44,9 @@
                                     $_SESSION['role'] = $role;
                                     $_SESSION['user_id'] = $user_id;
                                     $_SESSION['status'] = $status;
+                                    $_SESSION['email'] = $user['email'];
+                                    $_SESSION['phone'] = $user['phone'];
+                                    $_SESSION['address'] = $user['address'];
                                     header('Location: ./');
                                 }
                             }else {
@@ -52,6 +60,7 @@
             }
             require_once './App/Views/clients/login.php';
         }
+
         public function register() {
             $emailError = '';
 
@@ -189,6 +198,58 @@
             
             header('Location: ./?page=login');
             exit();
+        }
+
+        public function updateProfile() {
+            if (isset($_SESSION['user_id'])) {
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                    $userName = $_POST['userName'];
+                    $email = $_POST['email'];
+                    $phone = $_POST['phone'];
+                    $address = $_POST['address'];
+                    $image = $_FILES['avatar'];
+                    $userId = $_SESSION['user_id'];
+                    $targetDir = './public/img/products/';
+                    $avatar = $targetDir . basename($image['name']);
+
+                    $checkEmail = $this->UserModel->checkEmail($email, $userId);
+                    if ($checkEmail == null) {
+                        if ($image['name'] !== '') {
+                            move_uploaded_file($image['tmp_name'], $avatar);
+                            $user = $this->UserModel->updateProfile($email, $userName, $phone, $address, $avatar, $userId);
+                            if ($user) {
+                                $user_2 = $this->UserModel->selectId($userId);
+                                $_SESSION['userName'] = $user_2['user_name'];
+                                $_SESSION['avatar'] = $user_2['avatar'];
+                                $_SESSION['email'] = $user_2['email'];
+                                $_SESSION['phone'] = $user_2['phone'];
+                                $_SESSION['address'] = $user_2['address'];
+                                $_SESSION['checkUpdate'] = true;
+                            }
+                        }else {
+                            $user = $this->UserModel->updateProfile($email, $userName, $phone, $address, null, $userId);
+                            if ($user) {
+                                $user_2 = $this->UserModel->selectId($userId);
+                                $_SESSION['userName'] = $user_2['user_name'];
+                                $_SESSION['avatar'] = $user_2['avatar'];
+                                $_SESSION['email'] = $user_2['email'];
+                                $_SESSION['phone'] = $user_2['phone'];
+                                $_SESSION['address'] = $user_2['address'];
+                                $_SESSION['checkUpdate'] = true;
+                            }
+                        }
+                    }else {
+                        $this->message->warningMessage('Email does not exist!');
+                    }
+                }
+                require_once './App/Views/clients/profile.php';
+                if(isset($_SESSION['checkUpdate'])) {
+                    $this->message->successMessage('Updated Product Successfully!');
+                    unset($_SESSION['checkUpdate']);
+                }
+            }else {
+                require_once './App/Views/clients/404.php';
+            }
         }
     }
 ?>

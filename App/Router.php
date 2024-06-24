@@ -79,6 +79,7 @@ class Router {
             'reset-password' => ['AuthController', 'resetPassword'],
             'logout' => ['AuthController', 'logout'],
             'checkmail' => ['View', './App/Views/clients/checkmail.php'],
+            'profile' => ['AuthController', 'updateProfile'],
         ]
     ];
 

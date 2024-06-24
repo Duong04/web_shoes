@@ -92,6 +92,21 @@ class Users extends Database {
         $sql = "UPDATE users SET role_id = ? WHERE user_id = ?";
         return $this->cud($sql, [$roleId, $userId]);
     }
+
+    public function checkEmail($email, $userId) {
+        $sql = "SELECT * FROM users WHERE email = ? AND user_id != ?";
+        return $this->selectOne($sql, [$email, $userId]);
+    }
+
+    public function updateProfile($email, $userName, $phone, $address, $avatar, $userId) {
+        if ($avatar == null) {
+            $sql = "UPDATE users SET email = ?, user_name = ?, phone = ?, address = ? WHERE user_id = ?";
+            return $this->cud($sql, [$email, $userName, $phone, $address, $userId]);
+        }else {
+            $sql = "UPDATE users SET email = ?, user_name = ?, phone = ?, address = ?, avatar = ? WHERE user_id = ?";
+            return $this->cud($sql, [$email, $userName, $phone, $address, $avatar, $userId]);
+        }
+    }
 }
 
 ?>
