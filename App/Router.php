@@ -68,6 +68,7 @@ class Router {
             'remove-cart' => ['CartController', 'removeCart'],
             'checkout' => ['OrderController', 'checkout'],
             'order-tracking' => ['OrderController', 'orders'],
+            'order-detail' => ['OrderController', 'orderDetail'],
             'blog' => ['View', './App/Views/clients/blog.php'],
             'thanks' => ['View', './App/Views/clients/thanks.php'],
             'contact' => ['View', './App/Views/clients/contact.php'],

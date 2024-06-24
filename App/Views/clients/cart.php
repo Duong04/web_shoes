@@ -113,7 +113,6 @@
                                 </td>
                             </tr>
                             <?php } 
-                                $totalAmount = $subTotal + $shipping; 
                                 if ($subTotal < 50) {
                                     $shipping = 10;
                                 }else if ($subTotal >= 50 && $subTotal < 100) {
@@ -121,6 +120,8 @@
                                 }else {
                                     $shipping = 0;
                                 } 
+                                
+                                $totalAmount = $subTotal + $shipping; 
                             ?>
                             <tr class="bottom_button">
                                 <td>

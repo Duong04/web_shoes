@@ -85,7 +85,7 @@
 						<p><strong>Payment Method:</strong> <?=$item['payment_method']?></p>
 						<p><strong>Payment Status:</strong> <?=$item['payment_status']?></p>
 						<div class="btn-event">
-							<a class="btn btn-outline-success" href="">View Detail</a>
+							<a class="btn btn-outline-success" href="./?page=order-detail&order_id=<?=$item['order_id']?>">View Detail</a>
 							<a onclick="updatee(event)" class="btn btn-outline-danger" href="">Cancel Order</a>
 						</div>
 					</div>
@@ -111,8 +111,7 @@
 						<p><strong>Payment Method:</strong> <?=$item['payment_method']?></p>
 						<p><strong>Payment Status:</strong> <?=$item['payment_status']?></p>
 						<div class="btn-event">
-							<a class="btn btn-outline-success" href="">View Detail</a>
-							<a onclick="updatee(event)" class="btn btn-outline-danger" href="">Cancel Order</a>
+							<a class="btn btn-outline-success" href="./?page=order-detail&order_id=<?=$item['order_id']?>">View Detail</a>
 						</div>
 					</div>
 				<?php } } else {?>
@@ -137,8 +136,7 @@
 						<p><strong>Payment Method:</strong> <?=$item['payment_method']?></p>
 						<p><strong>Payment Status:</strong> <?=$item['payment_status']?></p>
 						<div class="btn-event">
-							<a class="btn btn-outline-success" href="">View Detail</a>
-							<a onclick="updatee(event)" class="btn btn-outline-danger" href="">Cancel Order</a>
+							<a class="btn btn-outline-success" href="./?page=order-detail&order_id=<?=$item['order_id']?>">View Detail</a>
 						</div>
 					</div>
 				<?php } } else {?>
@@ -163,8 +161,7 @@
 						<p><strong>Payment Method:</strong> <?=$item['payment_method']?></p>
 						<p><strong>Payment Status:</strong> <?=$item['payment_status']?></p>
 						<div class="btn-event">
-							<a class="btn btn-outline-success" href="">View Detail</a>
-							<a onclick="updatee(event)" class="btn btn-outline-danger" href="">Cancel Order</a>
+							<a class="btn btn-outline-success" href="./?page=order-detail&order_id=<?=$item['order_id']?>">View Detail</a>
 						</div>
 					</div>
 				<?php } } else {?>
@@ -189,8 +186,7 @@
 						<p><strong>Payment Method:</strong> <?=$item['payment_method']?></p>
 						<p><strong>Payment Status:</strong> <?=$item['payment_status']?></p>
 						<div class="btn-event">
-							<a class="btn btn-outline-success" href="">View Detail</a>
-							<a onclick="updatee(event)" class="btn btn-outline-danger" href="">Cancel Order</a>
+							<a class="btn btn-outline-success" href="./?page=order-detail&order_id=<?=$item['order_id']?>">View Detail</a>
 						</div>
 					</div>
 				<?php } } else {?>

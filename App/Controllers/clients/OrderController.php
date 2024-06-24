@@ -70,5 +70,15 @@
                 require_once './App/Views/clients/404.php';
             }
         }
+
+        public function orderDetail() {
+            if (isset($_GET['order_id'])) {
+                $orderId = $_GET['order_id'];
+                $orderDetails = $this->orderDetail->selectOrderDetail($orderId);
+                require_once './App/Views/clients/order-detail.php';
+            }else {
+                require_once './App/Views/clients/404.php';
+            }
+        }
     }
 ?>
