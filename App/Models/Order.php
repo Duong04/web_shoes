@@ -34,5 +34,25 @@
             $sql = "UPDATE orders SET status = ? WHERE order_id = ?";
             return $this->cud($sql, [$status, $id]);
         }
+
+        public function statiscialOrder($first, $last) {
+            $sql = '';
+            if ($first == null && $last == null) {
+                $sql = "SELECT SUM(total_amount) as totalAmount FROM orders WHERE status = 'delivered'";
+            }else {
+                $sql = "SELECT SUM(total_amount) as totalAmount FROM orders WHERE order_date BETWEEN '$first' AND '$last' AND status = 'delivered'";
+            }
+            return $this->selectStatistical($sql);
+        }
+
+        public function countOrder($status) {
+            $sql = '';
+            if ($status == null) {
+                $sql = "SELECT COUNT(*) AS totalOrders FROM orders WHERE status != 'cancelled'";
+            }else {
+                $sql = "SELECT COUNT(*) AS totalOrders FROM orders WHERE status ='$status'";
+            }
+            return $this->selectStatistical($sql);
+        }
     }
 ?>

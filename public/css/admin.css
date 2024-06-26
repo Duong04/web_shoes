@@ -112,7 +112,6 @@ div.dataTables_wrapper div.dataTables_length select {
     border: 0.5px solid #ccc;
     border-radius: 10px;
     background-color: #fff;
-    margin: 30px 0;
 }
 
 .icon-order {
@@ -142,6 +141,11 @@ div.dataTables_wrapper div.dataTables_length select {
 .green-2 {
     background-color: rgb(209, 250, 229);
     color: rgb(36, 165, 124);
+}
+
+.red {
+    background-color: rgb(255, 182, 182);
+    color: rgb(224, 22, 22);
 }
 
 .quantity-order {
