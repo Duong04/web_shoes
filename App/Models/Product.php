@@ -24,6 +24,44 @@
             return $this->selectOne($sql, [$id]);
         }
 
+        public function filterProducts($category_name, $filter) {
+            $sql = "SELECT * FROM products P 
+                    INNER JOIN categories C 
+                    ON C.category_id = P.category_id 
+                    WHERE P.is_active = 'active' ";
+            if ($category_name !== 'All') {
+                $sql .= "AND C.category_name = ? ";
+            }
+
+            switch ($filter) {
+                case 'new':
+                    $sql .= "ORDER BY P.updated_at DESC";
+                    break;
+                case 'old':
+                    $sql .= "ORDER BY P.updated_at ASC";
+                    break;
+                case 'price-desc':
+                    $sql .= "ORDER BY P.initial_price DESC";
+                    break;
+                case 'price-asc':
+                    $sql .= "ORDER BY P.initial_price ASC";
+                    break;
+                case 'sale-desc':
+                    $sql .= "ORDER BY P.discount DESC";
+                    break;
+                case 'sale-asc':
+                    $sql .= "ORDER BY P.discount ASC";
+                    break;
+            }
+
+            if ($category_name == 'All') {
+                return $this->selectAll($sql);
+            }
+
+            return $this->selectAllWithId($sql, [$category_name]);
+            
+        }
+
         public function selectName($name) {
             $sql = "SELECT * FROM products P 
                     INNER JOIN categories C On C.category_id = P.category_id

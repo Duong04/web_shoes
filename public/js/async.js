@@ -340,9 +340,27 @@ searchInput.addEventListener('input', async (e) => {
     document.querySelector('.search-data').innerHTML = responseData.data;
 });
 
-document.querySelector('#price-range').addEventListener('click', () => {
-    const lowerValue = document.querySelector('#lower-value');
-    const upperValue = document.querySelector('#upper-value');
+document.querySelector('#filter-product').onchange = async function (e) {
+    const filter = e.target.value;
+    const categoryName = this.getAttribute('data-product-name');
+    try {
+        const response = await fetch(`./?page=product-filter&category_name=${categoryName}&filter=${filter}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
 
-    console.log(lowerValue.innerText,' + ', upperValue.innerText);
-});
+        const responseData = await response.json();
+        document.querySelector('#shop-parent').innerHTML = responseData.data;
+    } catch (error) {
+        console.error('Failed to filter: ', error);
+    }
+}
+
+// document.querySelector('#price-range').addEventListener('click', () => {
+//     const lowerValue = document.querySelector('#lower-value');
+//     const upperValue = document.querySelector('#upper-value');
+
+//     console.log(lowerValue.innerText,' + ', upperValue.innerText);
+// });

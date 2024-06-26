@@ -62,6 +62,7 @@ class Router {
             'search' => ['HomeController', 'search'],
             'shop' => ['ShopController', 'index'],
             'product-detail' => ['ShopController', 'single'],
+            'product-filter' => ['ShopController', 'productFilter'],
             'cart' => ['CartController', 'index'],
             'add-cart' => ['CartController', 'addCart'],
             'update-quantity' => ['CartController', 'updateQuantity'],

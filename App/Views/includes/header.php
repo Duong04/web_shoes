@@ -32,7 +32,7 @@
 						<li class="nav-item"><a href="./?page=login" class="cart"><span class="ti-user"></span></a></li>
 						<?php }else { ?>
 						<li class="d-flex align-items-center position-relative">
-							<img width="35px" height="35px" class="dropdown-toggle rounded-circle" data-toggle="dropdown" role="button"
+							<img width="35px" height="35px" class="dropdown-toggle rounded-circle" style="object-fit: cover;" data-toggle="dropdown" role="button"
 								 aria-expanded="false" src="<?=$_SESSION['avatar']?>" alt="">
 							<ul class="dropdown-menu" style="left: -80px;">
 								<li class="nav-item" style="margin-left: 25px;"><a class="nav-link" href="./?page=profile">Profile</a></li>

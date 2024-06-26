@@ -61,6 +61,7 @@
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+						<a class="text-white"><?=isset($_GET['category_name']) ? urldecode($_GET['category_name']) : 'All Products'?></a>
 					</nav>
 				</div>
 			</div>
@@ -83,18 +84,6 @@
 				</div>
 				<div class="sidebar-filter mt-50">
 					<div class="top-filter-head">Product Filters</div>
-					<div class="common-filter">
-						<div class="head">Brands</div>
-						<form action="#">
-							<ul>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
-								<li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Samsung<span>(19)</span></label></li>
-							</ul>
-						</form>
-					</div>
 					<div class="common-filter">
 						<div class="head">Color</div>
 						<form action="#">
@@ -127,12 +116,17 @@
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
 				<!-- Start Filter Bar -->
+				<?php if (!empty($products)) { ?>
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1">Default sorting</option>
-							<option value="1">Default sorting</option>
-							<option value="1">Default sorting</option>
+						<select data-product-name="<?=isset($_GET['category_name']) ? urldecode($_GET['category_name']) :'All'?>" id="filter-product">
+							<option value="">Filter</option>
+							<option value="new">New</option>
+							<option value="old">Old</option>
+							<option value="price-desc">Price Desc</option>
+							<option value="price-asc">Price Asc</option>
+							<option value="sale-desc">Sale Desc</option>
+							<option value="sale-asc">Sale Asc</option>
 						</select>
 					</div>
 					<div class="sorting mr-auto">
@@ -149,10 +143,11 @@
 					</div>
 					<?php } ?>
 				</div>
+				<?php } ?>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
+					<div class="row" id="shop-parent">
 						<!-- single product -->
 						<?php 
 						if (!empty($products)) {
@@ -205,6 +200,7 @@
 				</section>
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
+				<?php if (!empty($products)) { ?>
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
 						<select>
@@ -220,6 +216,7 @@
 					</div>
 					<?php } ?>
 				</div>
+				<?php } ?>
 				<!-- End Filter Bar -->
 			</div>
 		</div>
