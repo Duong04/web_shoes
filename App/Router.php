@@ -89,7 +89,7 @@ class Router {
         $role = isset($_GET['role']) ? $_GET['role'] : 'client';
 
         if ($role === 'admin') {
-            if (isset($_SESSION['user_id']) && ($_SESSION['role'] === 'Admin' || $_SESSION['role'] === 'Staff')) {
+            if (isset($_SESSION['user_id']) && ($_SESSION['role'] === 'Admin' || $_SESSION['role'] === 'Staff' || $_SESSION['role'] == 'Manager')) {
                 $this->handleRoute($role, $page);
             } else {
                 header('Location: ./?page=login');

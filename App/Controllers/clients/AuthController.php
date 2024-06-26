@@ -28,7 +28,7 @@
                             $emailError = 'Account has been disabled!';
                         } else {
                             if (password_verify($psw, $password)) {
-                                if ($role == 'Staff' || $role == 'Admin') {
+                                if ($role == 'Staff' || $role == 'Admin' || $role == 'Manager') {
                                     $_SESSION['userName'] = $user_name;
                                     $_SESSION['avatar'] = $user['avatar'];
                                     $_SESSION['role'] = $role;
